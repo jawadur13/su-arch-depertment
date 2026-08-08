@@ -31,11 +31,11 @@ export default function LabForm({ initial }: { initial: Lab | null }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <TextField label="Slug (URL-hash deep link)" name="slug" required
                      defaultValue={initial?.slug ?? ''}
-                     placeholder="fluid-mechanics-lab"
+                     placeholder="design-studio-lab"
                      monospace />
           <TextField label="Name" name="name" required
                      defaultValue={initial?.name ?? ''}
-                     placeholder="Fluid Mechanics Lab" />
+                     placeholder="Design Studio" />
         </div>
         <TextField label="Tagline" name="tagline" required
                    defaultValue={initial?.tagline ?? ''}

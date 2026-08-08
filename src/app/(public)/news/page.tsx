@@ -7,9 +7,9 @@ import { getNews, getNewsCount, getNewsLanding } from '@/lib/identity';
 import { sanitizeHtml } from '@/lib/sanitize-html';
 
 export const metadata = {
-  title: 'News — Department of Mechanical Engineering',
+  title: 'News — Department of Architecture',
   description:
-    'Latest news from the Department of Mechanical Engineering, Sonargaon University — events, workshops, industrial visits, and academic milestones.',
+    'Latest news from the Department of Architecture, Sonargaon University — events, workshops, industrial visits, and academic milestones.',
 };
 
 const FALLBACK_HERO_IMAGE = '/assets/site-school-1024x576.webp';

@@ -4,9 +4,9 @@ import Container from '@/components/ui/Container';
 import { getResearchPapers, getPageHero } from '@/lib/identity';
 
 export const metadata = {
-  title: 'Research — Department of Mechanical Engineering',
+  title: 'Research — Department of Architecture',
   description:
-    'Published research papers from the Department of Mechanical Engineering, Sonargaon University.',
+    'Published research papers from the Department of Architecture, Sonargaon University.',
 };
 
 export default async function ResearchPage() {
@@ -28,7 +28,7 @@ export default async function ResearchPage() {
         <div className="mx-auto max-w-3xl text-center mb-10 md:mb-14">
           <p className="text-[15px] md:text-[16px] leading-[1.85] text-gray-700">
             A selection of research publications by faculty and students of the
-            Department of Mechanical Engineering, Sonargaon University, spanning
+            Department of Architecture, Sonargaon University, spanning
             thermodynamics, fluid mechanics, materials science, energy systems,
             and more.
           </p>

@@ -88,7 +88,7 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
                 Postgraduate prospectus coming soon
               </p>
               <p className="text-gray-500 text-sm">
-                Postgraduate programs in Mechanical Engineering are not offered yet. Please check back later for updates.
+                Postgraduate programs in Architecture are not offered yet. Please check back later for updates.
               </p>
             </>
           ) : (

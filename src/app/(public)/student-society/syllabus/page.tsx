@@ -4,9 +4,9 @@ import { getSyllabi, getPageHero } from '@/lib/identity';
 import SyllabusClient from './SyllabusClient';
 
 export const metadata = {
-  title: 'Syllabus — Department of Mechanical Engineering',
+  title: 'Syllabus — Department of Architecture',
   description:
-    'Course-by-course syllabus for the Department of Mechanical Engineering, Sonargaon University.',
+    'Course-by-course syllabus for the Department of Architecture, Sonargaon University.',
 };
 
 export default async function SyllabusPage() {
@@ -27,7 +27,7 @@ export default async function SyllabusPage() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-10 md:mb-12">
           <p className="text-base md:text-lg text-gray-700 leading-[1.85]">
-            Course-by-course syllabus for the Department of Mechanical Engineering. Download the official PDF for detailed credit distribution, course outcomes, and reference materials.
+            Course-by-course syllabus for the Department of Architecture. Download the official PDF for detailed credit distribution, course outcomes, and reference materials.
           </p>
         </div>
 

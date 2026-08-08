@@ -5,7 +5,7 @@ import Container from '@/components/ui/Container';
 export const metadata = {
   title: 'Page Not Found',
   description:
-    "The page you're looking for doesn't exist on the Department of Mechanical Engineering website.",
+    "The page you're looking for doesn't exist on the Department of Architecture website.",
 };
 
 const quickLinks = [
@@ -51,7 +51,7 @@ export default function NotFound() {
           </span>
 
           <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-4">
-            Looks like this gear is missing.
+            Looks like this page went missing.
           </h2>
 
           <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10">

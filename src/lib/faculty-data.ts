@@ -37,7 +37,7 @@ export interface Faculty {
   previousEmployment?: SectionContent;
 }
 
-const DEPARTMENT = 'Department of Mechanical Engineering';
+const DEPARTMENT = 'Department of Architecture';
 
 export const faculty: Faculty[] = [
   // ───── Leadership ─────
@@ -52,7 +52,7 @@ export const faculty: Faculty[] = [
   {
     slug: 'mostofa-hossain',
     name: 'Prof. Md. Mostofa Hossain',
-    designation: 'Head, Department of Mechanical Engineering',
+    designation: 'Head, Department of Architecture',
     secondaryTitle: 'Professor',
     badge: 'Head of Department',
     type: 'leadership',
@@ -64,7 +64,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Prof. Md. Mostofa Hossain' },
       { label: 'Designation', value: 'Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529729' },
     ],
@@ -145,7 +145,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'A M M Shamsul Alam' },
       { label: 'Designation', value: 'Associate Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01769005367' },
     ],
@@ -167,7 +167,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Minhaz Uddin' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529759' },
     ],
@@ -179,7 +179,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Niloy Sarkar' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529829' },
     ],
@@ -191,7 +191,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Nuruzzaman Rakib' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529752' },
     ],
@@ -222,7 +222,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Shahinur Rahman' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01958642411' },
     ],
@@ -247,7 +247,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'M. A. Faisal Junaeat Imrul' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01700936248' },
     ],
@@ -277,7 +277,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Navid Inan' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01958642475' },
     ],
@@ -289,7 +289,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Misbah Uddin' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01836414499' },
     ],
@@ -306,7 +306,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Nahiyan Chowdhury' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01719987789' },
     ],
@@ -318,7 +318,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'M. I. Washif Rahman' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01818060447' },
       { label: 'Alt Contact', value: '01955529834' },
@@ -331,7 +331,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Khandoker Mohammad Faisal Karim' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01832385685' },
     ],
@@ -357,7 +357,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Hasan Tareq Mahin' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01521408094' },
     ],
@@ -369,7 +369,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Rokiya Sultana' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01627542002' },
     ],
@@ -393,7 +393,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Ibrahim Khalil Apurba' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01957781158' },
       { label: 'Alt Contact', value: '01955529812' },
@@ -435,7 +435,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Toriqul Islam' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01957113357' },
     ],
@@ -447,7 +447,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Munkasir Ahnaf Jisba' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01860971800' },
     ],
@@ -459,7 +459,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Faruque Hossain' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529875' },
       { label: 'Alt Contact', value: '01717152521' },
@@ -517,7 +517,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Sadman Hossain' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01675387100' },
     ],
@@ -529,7 +529,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Towheedur Rahman Tanvir' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01303039919' },
     ],
@@ -587,7 +587,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Nafis Iqbal' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01771551725' },
       { label: 'Alt Contact', value: '01732678978' },
@@ -605,7 +605,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Shafi Uddin Bhuiyan' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01707516365' },
     ],
@@ -617,7 +617,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Mahfujul Islam' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01551182174' },
     ],
@@ -652,7 +652,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Khakan Hasan Mim' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01796176884' },
     ],
@@ -692,7 +692,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Ikramul Hasib' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01679114650' },
     ],
@@ -731,7 +731,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Anash Mia' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Architecture' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01779763212' },
     ],

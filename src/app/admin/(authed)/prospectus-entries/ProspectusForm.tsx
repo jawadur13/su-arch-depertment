@@ -38,14 +38,14 @@ export default function ProspectusForm({ initial }: { initial: ProspectusEntry |
       <Card title="Basics">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <TextField label="Slug" name="slug" required monospace
-                     defaultValue={initial?.slug ?? ''} placeholder="bsc-mechanical-engineering" />
+                     defaultValue={initial?.slug ?? ''} placeholder="bsc-architecture" />
           <SelectField label="Level" name="level" required options={LEVELS}
                        defaultValue={initial?.level ?? 'Undergraduate'} />
         </div>
         <TextField label="Title (full)" name="title" required defaultValue={initial?.title ?? ''} />
         <TextField label="Short title (shown on card)" name="shortTitle" required defaultValue={initial?.shortTitle ?? ''} />
         <TextField label="Department" name="department" required
-                   defaultValue={initial?.department ?? 'Mechanical Engineering'} />
+                   defaultValue={initial?.department ?? 'Architecture'} />
       </Card>
 
       <Card title="Cover image">

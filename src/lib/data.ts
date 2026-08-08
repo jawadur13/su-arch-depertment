@@ -11,15 +11,15 @@ export const programs: {
   {
     id: 'undergrad',
     title: 'Undergraduate',
-    subtitle: 'B.Sc in Mechanical Engineering',
+    subtitle: 'B.Sc in Architecture',
     duration: '4 Years · 8 Semesters',
-    description: 'Our flagship undergraduate program builds a strong foundation in core mechanical engineering — combining rigorous theory, modern lab practice, and design projects that prepare graduates for industry, research, and global postgraduate study.',
+    description: 'Our flagship undergraduate program builds a strong foundation in core architectural design — combining rigorous theory, hands-on studio practice, and design projects that prepare graduates for industry, research, and global postgraduate study.',
     image: '/assets/program-undergraduate.webp',
     specializations: [
-      'Thermal Engineering',
-      'Design & Manufacturing',
-      'Robotics & Automation',
-      'Energy Systems',
+      'Architectural Design',
+      'Urban & Regional Planning',
+      'Building Technology',
+      'Sustainable Design',
     ],
     cta: 'View More',
   },
@@ -41,13 +41,13 @@ export const quickLinks: { name: string; href: string; external?: boolean; disab
 ];
 
 export const researchAreas = [
-  { name: 'Thermodynamics & Heat Transfer', icon: 'Flame' },
-  { name: 'Fluid Mechanics & CFD', icon: 'Waves' },
-  { name: 'Robotics & Automation', icon: 'Bot' },
-  { name: 'Manufacturing & Production', icon: 'Wrench' },
-  { name: 'Materials Science & Engineering', icon: 'Layers' },
-  { name: 'Renewable Energy Systems', icon: 'Leaf' },
-  { name: 'Automotive Engineering', icon: 'Car' }
+  { name: 'Urban & Regional Planning', icon: 'Map' },
+  { name: 'Sustainable Design', icon: 'Leaf' },
+  { name: 'Building Technology', icon: 'Building2' },
+  { name: 'Heritage Conservation', icon: 'Landmark' },
+  { name: 'Housing & Community Design', icon: 'Home' },
+  { name: 'Landscape Architecture', icon: 'Trees' },
+  { name: 'Digital Fabrication', icon: 'Layers' }
 ];
 
 export const campusServices: { name: string; description: string; image: string; href?: string }[] = [
