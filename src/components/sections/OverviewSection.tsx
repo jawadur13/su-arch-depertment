@@ -25,9 +25,11 @@ export default function OverviewSection() {
             className="order-2 lg:order-1 space-y-6"
           >
             <p className="text-justify text-[16px] font-medium leading-[1.75] tracking-[0.035em] text-black">
-              At the heart of design and innovation, the Department of Architecture is committed to shaping future leaders in the field. Explore the dynamic world of architecture, where creativity meets technology, and where ideas transform into groundbreaking spaces. With a focus on interdisciplinary collaboration and real-world applications, our department prepares students to tackle complex challenges and contribute to the advancement of the built environment and society.
-            </p>
 
+The Department of Architecture, under the Faculty of Science & Engineering, offers the Bachelor of Architecture (B.Arch) degree at Sonargaon University (SU). The programme follows the academic and professional standards of the Institute of Architects Bangladesh (IAB), with a continuously updated curriculum designed to meet contemporary needs while allowing flexibility based on students’ interests.
+
+Design studios form the core of the programme, supported by a 1:10 teacher-student ratio, industry-oriented projects, and research-based learning. The department also promotes co-curricular activities, cultural engagement, and strong connections with industry and other stakeholders to prepare students for successful professional careers.
+</p>
             <div className="grid gap-5 sm:grid-cols-2">
               <a
                 href="/about/overview"
