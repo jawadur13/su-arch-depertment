@@ -11,6 +11,8 @@ import {
   getUniversityIdentity,
 } from '@/lib/identity';
 import { type SectionContent } from '@/lib/faculty-data';
+import { ListItem } from './ListItem';
+import ExpandableList from './ExpandableList';
 
 // Pre-render every current slug at build time; Next.js defaults to
 // dynamicParams=true so admin-added slugs after deploy render
@@ -60,35 +62,6 @@ const PLACEHOLDER = (
   <p className="text-gray-400 italic text-sm">Information will be updated soon.</p>
 );
 
-// A list item may embed a source link (DOI, Google Scholar, etc.) right in
-// the citation text. Pull the URL out and render it as its own clickable
-// line below the citation instead of inline plain text.
-const URL_RE = /(https?:\/\/[^\s]+)/;
-
-function ListItem({ text }: { text: string }) {
-  const match = URL_RE.exec(text);
-  if (!match) return <li>{text}</li>;
-
-  const url = match[1].replace(/[.,;)\]]+$/, '');
-  const rest = (text.slice(0, match.index) + text.slice(match.index + url.length))
-    .replace(/\s+/g, ' ')
-    .trim();
-
-  return (
-    <li>
-      {rest}
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-1 block text-accent underline break-all hover:text-accent/80 transition-colors"
-      >
-        {url}
-      </a>
-    </li>
-  );
-}
-
 function renderSection(value: SectionContent | null | undefined) {
   if (value == null) return PLACEHOLDER;
 
@@ -99,13 +72,7 @@ function renderSection(value: SectionContent | null | undefined) {
   if (!Array.isArray(value) || value.length === 0) return PLACEHOLDER;
 
   if (typeof value[0] === 'string') {
-    return (
-      <ul className="list-disc list-outside pl-5 space-y-2">
-        {(value as string[]).map((item, i) => (
-          <ListItem key={i} text={item} />
-        ))}
-      </ul>
-    );
+    return <ExpandableList items={value as string[]} />;
   }
 
   return (
