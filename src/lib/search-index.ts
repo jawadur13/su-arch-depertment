@@ -96,6 +96,7 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     departmentLayoutRows,
     serviceCharterRows,
     feeStructureRows,
+    curriculumRows,
     transferCreditsRow,
     waiverCategoryRows,
     scholarshipRows,
@@ -171,6 +172,12 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     prisma.programFeeStructure.findMany({
       orderBy: { displayOrder: 'asc' },
       select: { introOverline: true },
+    }),
+    // Program Curriculum — dedicated per-program detail page ("View
+    // More" from the homepage Programmes Offered card).
+    prisma.programCurriculum.findMany({
+      orderBy: { displayOrder: 'asc' },
+      select: { heroTitle: true, slug: true },
     }),
     // Phase 8c — TransferCredits singleton entry. Existing static
     // "Transfer Credits" Page entry stays alongside (matches the
@@ -362,6 +369,14 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     type: 'Fees',
   }));
 
+  // ProgramCurriculum — dedicated per-program detail page.
+  const curriculumItems: SearchItem[] = curriculumRows.map((c) => ({
+    title: c.heroTitle,
+    description: 'Course structure, credit distribution, and full syllabus',
+    href: `/admission/programs/${c.slug}`,
+    type: 'Curriculum',
+  }));
+
   // ─── Phase 8c ───
   const transferCreditsItems: SearchItem[] = transferCreditsRow
     ? [{
@@ -428,6 +443,7 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     ...departmentLayoutItems,
     ...serviceCharterItems,
     ...feeItems,
+    ...curriculumItems,
     ...transferCreditsItems,
     ...waiverCategoryItems,
     ...scholarshipItems,

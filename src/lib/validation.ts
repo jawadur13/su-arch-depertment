@@ -289,6 +289,9 @@ export const uploadKindSchema = z.enum([
   'journey-cta-hero',
   // Phase 17
   'legal-hero',
+  // Program curriculum detail page
+  'program-curriculum-hero',
+  'program-curriculum-syllabus-pdf',
 ]);
 
 export const uploadSignSchema = z.object({
@@ -939,6 +942,56 @@ export const programFeeStructureCreateSchema = z.object({
 });
 
 export const programFeeStructureUpdateSchema = programFeeStructureCreateSchema;
+
+// ─── ProgramCurriculum (1:1 with Program) ──────────────────────
+//
+// Dedicated program detail page ("View More" from the homepage
+// Programmes Offered card). `semesters` is a Json array; Credit
+// Distribution (Core/Elective/Total/Cumulative) is derived from it
+// at render time rather than stored separately.
+//
+const curriculumCourseSchema = z.object({
+  code:     z.string().min(1),
+  title:    z.string().min(1),
+  credits:  z.number(),
+  elective: z.boolean().default(false),
+});
+
+const curriculumSemesterSchema = z.object({
+  yearLabel:         z.string().min(1),   // e.g. "1st Year"
+  semesterLabel:     z.string().min(1),   // e.g. "1st Semester"
+  totalContactHours: z.string().min(1),   // e.g. "22.0 hrs./week"
+  // Credits actually required from electives this semester (after
+  // choosing one from each "select any one" set) — NOT the sum of
+  // every listed alternative, since `courses` lists all options for
+  // browsing. Core credits don't need this: core courses have no
+  // alternatives, so summing non-elective `courses` rows is exact.
+  electiveCreditsRequired: z.number().default(0),
+  courses:           z.array(curriculumCourseSchema).default([]),
+});
+
+const curriculumOverviewStatSchema = z.object({
+  iconName: z.string().min(1),
+  label:    z.string().min(1),
+  value:    z.string().min(1),
+});
+
+export const programCurriculumCreateSchema = z.object({
+  programId:       z.string().min(1),
+  slug:            z.string().min(1).max(200)
+                     .regex(/^[a-z0-9-]+$/, 'Use lowercase letters, numbers, and hyphens only'),
+  heroOverline:    z.string().max(300).optional().nullable(),
+  heroTitle:       z.string().min(1).max(300),
+  introOverline:   z.string().max(300).optional().nullable(),
+  introBody:       z.string().optional().nullable(),
+  overviewStats:   z.array(curriculumOverviewStatSchema).default([]),
+  specializations: z.array(z.string().min(1)).default([]),
+  careerProspects: z.string().optional().nullable(),
+  semesters:       z.array(curriculumSemesterSchema).default([]),
+  displayOrder:    z.number().int().default(0),
+});
+
+export const programCurriculumUpdateSchema = programCurriculumCreateSchema;
 
 // ─────────────────────────────────────────────────────────────────
 //  Phase 8c — Admission CMS Part 3 (Transfer Credits + Waiver/Scholarship)

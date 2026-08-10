@@ -53,10 +53,10 @@ Design studios form the core of the programme, supported by a 1:10 teacher-stude
             className="order-1 lg:order-2 overflow-hidden"
           >
             <Image
-              src="/assets/homeimg.webp"
-              alt="Sonargaon University Architecture students engaged in studio work"
-              width={1600}
-              height={900}
+              src="https://res.cloudinary.com/ynfut7mx/image/upload/f_auto,q_auto:good/v1786350096/sonargaon-arch/gallery/z8xeifkxt2tr6riopuir.webp"
+              alt="Architecture student presenting a design studio project during jury review at Sonargaon University"
+              width={2048}
+              height={1364}
               sizes="(min-width: 1024px) 540px, 100vw"
               className="h-auto w-full object-cover lg:h-[294px]"
             />

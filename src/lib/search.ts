@@ -36,6 +36,7 @@ export interface SearchItem {
     | 'ServiceCharter'
     // Phase 8b
     | 'Fees'
+    | 'Curriculum'
     // Phase 8c
     | 'TransferCredits'
     | 'WaiverCategory'

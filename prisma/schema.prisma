@@ -166,12 +166,64 @@ model Program {
   // Program admin form stays focused on academic metadata (per
   // constraint #12); fee structure lives at /admin/program-fee-structures.
   feeStructure    ProgramFeeStructure?
+  // Back-relation for ProgramCurriculum (1:1, optional) — the dedicated
+  // "View More" detail page (course structure + credit distribution).
+  curriculum      ProgramCurriculum?
 
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
   @@index([displayOrder])
   @@map("program")
+}
+
+// Dedicated per-program detail page — /admission/programs/[slug].
+// Reached via the homepage Programmes Offered card's "View More" CTA
+// (Program.ctaHref). Mirrors ProgramFeeStructure's 1:1 FK-to-Program
+// pattern, but keeps its own `slug` since the route needs a stable
+// URL segment independent of Program.degreeCode (which may contain
+// characters like "." unsuitable for a path segment).
+model ProgramCurriculum {
+  id        String  @id @default(cuid())
+  programId String  @unique
+  program   Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+  slug      String  @unique
+
+  heroOverline      String?
+  heroTitle         String
+  heroImageUrl      String?
+  heroImagePublicId String?
+
+  introOverline String?
+  introBody     String? @db.Text
+
+  // [{label, value, iconName}] — "At a Glance" stat cards.
+  overviewStats Json
+
+  // Independently editable from Program.specializations (seeded from
+  // it, but this page's own copy going forward).
+  specializations String[]
+
+  // Nullable — the section is omitted entirely on the public page
+  // when empty rather than shown with placeholder copy.
+  careerProspects String? @db.Text
+
+  // [{yearLabel, semesterLabel, totalCredits, totalContactHours,
+  //   courses: [{code, title, credits, elective}]}] — one entry per
+  // semester. Credit Distribution (Core/Elective/Total/Cumulative)
+  // is derived from this at render time, not stored separately.
+  semesters Json
+
+  syllabusPdfUrl      String?
+  syllabusPdfPublicId String?
+  syllabusPdfFileName String?
+
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([displayOrder])
+  @@map("program_curriculum")
 }
 
 model ResearchArea {

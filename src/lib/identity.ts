@@ -495,3 +495,23 @@ export const getJourneyCTAContent = cache(async () => {
 export const getLegalPagesContent = cache(async () => {
   return prisma.legalPagesContent.findUnique({ where: { id: 'singleton' } });
 });
+
+// Program Curriculum — dedicated per-program detail page reached via
+// the homepage Programmes Offered card's "View More" CTA.
+export const getProgramCurricula = cache(async () => {
+  return prisma.programCurriculum.findMany({
+    orderBy: { displayOrder: 'asc' },
+    include: {
+      program: { select: { id: true, programName: true, degreeCode: true } },
+    },
+  });
+});
+
+export const getProgramCurriculumBySlug = cache(async (slug: string) => {
+  return prisma.programCurriculum.findUnique({
+    where: { slug },
+    include: {
+      program: { select: { id: true, programName: true, degreeCode: true } },
+    },
+  });
+});

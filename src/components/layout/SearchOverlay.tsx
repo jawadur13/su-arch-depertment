@@ -26,6 +26,7 @@ const TYPE_BADGE_COLOR: Record<SearchItem['type'], string> = {
   DepartmentLayout: 'bg-blue-100 text-blue-700',
   ServiceCharter: 'bg-rose-100 text-rose-700',
   Fees: 'bg-green-100 text-green-800',
+  Curriculum: 'bg-lime-100 text-lime-800',
   TransferCredits: 'bg-stone-100 text-stone-700',
   WaiverCategory: 'bg-red-100 text-red-700',
   Scholarship: 'bg-purple-100 text-purple-700',

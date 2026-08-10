@@ -128,6 +128,7 @@ const ADMISSION_NAV: NavItem[] = [
   { href: '/admin/prospectus-entries',         label: 'Prospectus',            icon: FileText },
   { href: '/admin/admission-requirements',     label: 'Admission Requirements',icon: ClipboardList },
   { href: '/admin/program-fee-structures',     label: 'Program Fee Structures',icon: CircleDollarSign },
+  { href: '/admin/program-curriculum',         label: 'Program Curriculum',    icon: FileText },
   { href: '/admin/admission-transfer-credits', label: 'Transfer Credits',      icon: ArrowLeftRight },
   { href: '/admin/waiver-scholarship-landing', label: 'Waiver/Scholarship Landing', icon: Layers },
   { href: '/admin/waiver-categories',          label: 'Waiver Categories',     icon: HeartHandshake },

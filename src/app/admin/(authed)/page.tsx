@@ -59,7 +59,7 @@ export default async function DashboardHome() {
     researchPaperCount, busRouteCount, syllabusCount,
     admissionNoticeCount, prospectusEntryCount,
     departmentLayoutCount, serviceCharterCount,
-    admissionRequirementsConfigured, programFeeStructureCount,
+    admissionRequirementsConfigured, programFeeStructureCount, programCurriculumCount,
     admissionTransferCreditsConfigured, waiverScholarshipLandingConfigured,
     waiverCategoryCount, scholarshipCount,
     newSubmissionCount, totalSubmissionCount,
@@ -90,6 +90,7 @@ export default async function DashboardHome() {
     prisma.serviceCharter.count(),
     prisma.admissionRequirements.count(),
     prisma.programFeeStructure.count(),
+    prisma.programCurriculum.count(),
     prisma.admissionTransferCredits.count(),
     prisma.waiverScholarshipLanding.count(),
     prisma.waiverCategory.count(),
@@ -154,6 +155,7 @@ export default async function DashboardHome() {
                     value={admissionRequirementsConfigured ? 'Configured' : 'Not configured'}
                     stringValue />
           <StatCard label="Program Fee Structures" value={programFeeStructureCount} />
+          <StatCard label="Program Curriculum Pages" value={programCurriculumCount} />
           <StatCard label="Transfer Credits"
                     value={admissionTransferCreditsConfigured ? 'Configured' : 'Not configured'}
                     stringValue />
@@ -373,6 +375,12 @@ export default async function DashboardHome() {
             icon={CircleDollarSign}
             title="Program Fee Structures"
             desc="Per-program tuition fee tables for /admission/tuition-fees"
+          />
+          <ActionCard
+            href="/admin/program-curriculum"
+            icon={FileText}
+            title="Program Curriculum"
+            desc="Course structure + credit distribution for the homepage “View More” page"
           />
           <ActionCard
             href="/admin/admission-transfer-credits"
