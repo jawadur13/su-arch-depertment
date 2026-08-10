@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { FileText, Download, CheckCircle2, ArrowRight } from 'lucide-react';
+import { FileText, Download, CheckCircle2, ArrowRight, ClipboardCheck, CreditCard } from 'lucide-react';
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
 import { getProgramCurriculumBySlug } from '@/lib/identity';
@@ -171,6 +171,7 @@ export default async function ProgramCurriculumPage({ params }: Props) {
                 const totalCredits = semCoreCredits + sem.electiveCreditsRequired;
                 return (
                   <details key={`${sem.yearLabel}-${sem.semesterLabel}`}
+                           name="semester-accordion"
                            className="group bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
                     <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer select-none list-none">
                       <div className="flex items-center gap-3 min-w-0">
@@ -274,16 +275,31 @@ export default async function ProgramCurriculumPage({ params }: Props) {
           </div>
         </section>
 
-        <div className="mt-6 flex flex-wrap gap-3 justify-center">
-          <Link href="/admission/requirements"
-                className="inline-flex items-center gap-2 bg-button-yellow hover:bg-button-yellow/90 text-primary font-bold rounded-lg px-5 py-2.5 text-sm transition-colors">
-            View Requirements
-          </Link>
-          <Link href="/admission/tuition-fees"
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-5 py-2.5 text-sm transition-colors">
-            Tuition Fees
-          </Link>
-        </div>
+        {/* Ready to Apply CTA */}
+        <section className="relative mt-6 bg-primary text-white rounded-2xl shadow-2xl overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-72 h-72 bg-accent/15 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          </div>
+          <div className="relative px-6 py-12 md:py-14 max-w-2xl mx-auto text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              Ready to Apply?
+            </h2>
+            <p className="text-white/80 text-base leading-relaxed mb-8">
+              Take the next step toward your career in {curriculum.heroTitle}. Review the admission requirements or explore the tuition fee structure.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="/admission/requirements"
+                    className="inline-flex items-center gap-2 bg-button-yellow hover:bg-button-yellow/90 text-primary font-bold rounded-lg px-6 py-3 text-sm transition-colors">
+                <ClipboardCheck size={16} /> View Requirements
+              </Link>
+              <Link href="/admission/tuition-fees"
+                    className="inline-flex items-center gap-2 border-2 border-white/70 hover:bg-white hover:text-primary text-white font-bold rounded-lg px-6 py-3 text-sm transition-colors">
+                <CreditCard size={16} /> Tuition Fees
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
       </Container>
     </PageShell>
