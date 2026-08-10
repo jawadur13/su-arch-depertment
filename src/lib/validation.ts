@@ -839,17 +839,14 @@ export const prospectusEntryUpdateSchema = prospectusEntryCreateSchema;
 
 // ─── DepartmentLayout + ServiceCharter ──────────────────────────
 //
-// Same shape as ProspectusEntry — two document libraries under
-// /about (see schema.prisma for the model comment).
+// Same shape as ProspectusEntry minus `level` — two document
+// libraries under /about (see schema.prisma for the model comment).
 //
-export const departmentLayoutLevelEnum = z.enum(['Undergraduate', 'Postgraduate']);
-
 export const departmentLayoutCreateSchema = z.object({
   slug:          z.string().min(1).max(160).regex(slugRegexHub, 'Slug must be lowercase letters, numbers, and hyphens only'),
   title:         z.string().min(1).max(500),
   shortTitle:    z.string().min(1).max(300),
   department:    z.string().min(1).max(300),
-  level:         departmentLayoutLevelEnum,
   coverUrl:      z.string().min(1),
   coverPublicId: optionalNullableString,
   pdfUrl:        optionalNullableString,
@@ -859,14 +856,11 @@ export const departmentLayoutCreateSchema = z.object({
 
 export const departmentLayoutUpdateSchema = departmentLayoutCreateSchema;
 
-export const serviceCharterLevelEnum = z.enum(['Undergraduate', 'Postgraduate']);
-
 export const serviceCharterCreateSchema = z.object({
   slug:          z.string().min(1).max(160).regex(slugRegexHub, 'Slug must be lowercase letters, numbers, and hyphens only'),
   title:         z.string().min(1).max(500),
   shortTitle:    z.string().min(1).max(300),
   department:    z.string().min(1).max(300),
-  level:         serviceCharterLevelEnum,
   coverUrl:      z.string().min(1),
   coverPublicId: optionalNullableString,
   pdfUrl:        optionalNullableString,

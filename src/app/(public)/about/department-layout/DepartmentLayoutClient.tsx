@@ -4,74 +4,42 @@ import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { Search, Download } from 'lucide-react';
 
-type Level = 'Undergraduate' | 'Postgraduate';
-
 export interface DepartmentLayoutItem {
   slug: string;
   title: string;
   shortTitle: string;
   department: string;
-  level: string; // 'Undergraduate' | 'Postgraduate' (Zod-validated upstream)
   cover: string;
   pdf: string;
 }
 
-const filters: ('All' | Level)[] = ['All', 'Undergraduate', 'Postgraduate'];
-
 export default function DepartmentLayoutClient({ items }: { items: DepartmentLayoutItem[] }) {
   const [query, setQuery] = useState('');
-  const [active, setActive] = useState<'All' | Level>('All');
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return items.filter((p) => {
-      if (active !== 'All' && p.level !== active) return false;
-      if (!q) return true;
-      return (
-        p.title.toLowerCase().includes(q) ||
-        p.department.toLowerCase().includes(q) ||
-        p.level.toLowerCase().includes(q)
-      );
-    });
-  }, [items, query, active]);
+    if (!q) return items;
+    return items.filter((p) => (
+      p.title.toLowerCase().includes(q) ||
+      p.department.toLowerCase().includes(q)
+    ));
+  }, [items, query]);
 
   return (
     <>
-      {/* Search + Filters */}
-      <div className="flex flex-col lg:flex-row gap-3 lg:items-center mb-3">
-        <div className="relative flex-1">
-          <Search
-            size={18}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-          />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search layouts..."
-            className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-200 bg-white text-sm placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15 transition"
-          />
-        </div>
-
-        <div className="flex gap-2 flex-wrap">
-          {filters.map((f) => {
-            const isActive = active === f;
-            return (
-              <button
-                key={f}
-                type="button"
-                onClick={() => setActive(f)}
-                className={`px-5 py-3 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
-                  isActive
-                    ? 'bg-primary text-white shadow-md'
-                    : 'bg-white text-gray-700 border border-gray-200 hover:border-accent hover:text-accent'
-                }`}
-              >
-                {f}
-              </button>
-            );
-          })}
-        </div>
+      {/* Search */}
+      <div className="relative mb-3">
+        <Search
+          size={18}
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+        />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search layouts..."
+          className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-200 bg-white text-sm placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15 transition"
+        />
       </div>
 
       <p className="text-sm text-gray-500 mb-8">
@@ -82,18 +50,7 @@ export default function DepartmentLayoutClient({ items }: { items: DepartmentLay
       {/* Layout cards */}
       {filtered.length === 0 ? (
         <div className="bg-white rounded-2xl border border-dashed border-gray-300 p-12 text-center">
-          {active === 'Postgraduate' && !query ? (
-            <>
-              <p className="text-primary font-semibold text-base mb-1">
-                Postgraduate department layout coming soon
-              </p>
-              <p className="text-gray-500 text-sm">
-                Postgraduate programs in Architecture are not offered yet. Please check back later for updates.
-              </p>
-            </>
-          ) : (
-            <p className="text-gray-500">No layouts match your search.</p>
-          )}
+          <p className="text-gray-500">No layouts match your search.</p>
         </div>
       ) : (
         <div
@@ -124,16 +81,6 @@ export default function DepartmentLayoutClient({ items }: { items: DepartmentLay
 
               {/* Body */}
               <div className="p-5 flex-1 flex flex-col">
-                <span
-                  className={`inline-block w-fit px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-3 ${
-                    p.level === 'Undergraduate'
-                      ? 'bg-primary/8 text-primary'
-                      : 'bg-accent/10 text-accent'
-                  }`}
-                >
-                  {p.level}
-                </span>
-
                 <h3 className="font-display text-base md:text-lg font-bold text-primary leading-snug mb-1">
                   {p.shortTitle}
                 </h3>

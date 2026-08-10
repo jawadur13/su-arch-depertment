@@ -18,7 +18,6 @@ export default async function ServiceCharterPage() {
     title: p.title,
     shortTitle: p.shortTitle,
     department: p.department,
-    level: p.level,
     cover: p.coverUrl,
     pdf: p.pdfUrl ?? '',
   }));

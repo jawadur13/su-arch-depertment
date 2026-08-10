@@ -20,7 +20,7 @@ export default async function EditDepartmentLayoutPage({ params }: { params: Pro
           Edit department layout: <span className="text-accent">{item.shortTitle}</span>
         </h1>
         <p className="mt-1 text-sm text-gray-500">
-          Slug: <code className="font-mono">{item.slug}</code> · {item.level}
+          Slug: <code className="font-mono">{item.slug}</code>
         </p>
       </header>
       <DepartmentLayoutForm initial={item} />

@@ -981,9 +981,9 @@ model ProspectusEntry {
 // ─────────────────────────────────────────────────────────────────
 //  About — Department Layout + Service and Charter
 //    Two document libraries under /about, same shape as
-//    ProspectusEntry (cover + optional PDF, UG/PG filter on the
-//    public list page). Kept as separate tables since each is its
-//    own CMS panel with its own reorder scope.
+//    ProspectusEntry minus the UG/PG level (single-department
+//    documents — no per-level variants). Kept as separate tables
+//    since each is its own CMS panel with its own reorder scope.
 // ─────────────────────────────────────────────────────────────────
 model DepartmentLayout {
   id            String   @id @default(cuid())
@@ -991,8 +991,6 @@ model DepartmentLayout {
   title         String
   shortTitle    String
   department    String
-  // level — 'Undergraduate' | 'Postgraduate'. Zod-validated.
-  level         String
   coverUrl      String
   coverPublicId String?
   pdfUrl        String?
@@ -1003,7 +1001,6 @@ model DepartmentLayout {
   updatedAt     DateTime @updatedAt
 
   @@index([displayOrder])
-  @@index([level])
   @@map("department_layout")
 }
 
@@ -1013,8 +1010,6 @@ model ServiceCharter {
   title         String
   shortTitle    String
   department    String
-  // level — 'Undergraduate' | 'Postgraduate'. Zod-validated.
-  level         String
   coverUrl      String
   coverPublicId String?
   pdfUrl        String?
@@ -1025,7 +1020,6 @@ model ServiceCharter {
   updatedAt     DateTime @updatedAt
 
   @@index([displayOrder])
-  @@index([level])
   @@map("service_charter")
 }
 

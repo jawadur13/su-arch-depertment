@@ -160,10 +160,10 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     // About — Department Layout + Service and Charter. Same shape as
     // Prospectus; all rows share their respective /about/* list page.
     prisma.departmentLayout.findMany({
-      select: { title: true, shortTitle: true, department: true, level: true, slug: true },
+      select: { title: true, shortTitle: true, department: true, slug: true },
     }),
     prisma.serviceCharter.findMany({
-      select: { title: true, shortTitle: true, department: true, level: true, slug: true },
+      select: { title: true, shortTitle: true, department: true, slug: true },
     }),
     // Phase 8b — ProgramFeeStructure search entries. AdmissionRequirements
     // is a singleton already covered by the static "Admission Requirements"
@@ -337,7 +337,7 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
   // /about/department-layout list page.
   const departmentLayoutItems: SearchItem[] = departmentLayoutRows.map((p) => ({
     title: p.title,
-    description: `${p.department} · ${p.level}`,
+    description: p.department,
     href: '/about/department-layout',
     type: 'DepartmentLayout',
   }));
@@ -346,7 +346,7 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
   // the /about/service-charter list page.
   const serviceCharterItems: SearchItem[] = serviceCharterRows.map((p) => ({
     title: p.title,
-    description: `${p.department} · ${p.level}`,
+    description: p.department,
     href: '/about/service-charter',
     type: 'ServiceCharter',
   }));

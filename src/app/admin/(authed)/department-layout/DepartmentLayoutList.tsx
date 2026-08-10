@@ -62,9 +62,6 @@ export default function DepartmentLayoutList({ items: initialItems }: { items: D
             <img src={p.coverUrl} alt="" className="w-12 h-14 rounded bg-gray-50 border border-gray-200 object-cover shrink-0" />
             <div className="min-w-0">
               <div className="flex items-center gap-2 mb-0.5">
-                <span className={`inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${p.level === 'Undergraduate' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
-                  {p.level}
-                </span>
                 {p.pdfUrl && <FileText size={14} className="text-accent" />}
               </div>
               <div className="font-medium text-gray-900 text-sm truncate">{p.shortTitle}</div>

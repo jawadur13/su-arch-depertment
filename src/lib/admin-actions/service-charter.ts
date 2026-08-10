@@ -39,7 +39,6 @@ function readServiceCharterRow(formData: FormData) {
     title:         getStr(formData, 'title'),
     shortTitle:    getStr(formData, 'shortTitle'),
     department:    getStr(formData, 'department'),
-    level:         getStr(formData, 'level'),
     coverUrl:      getStr(formData, 'coverUrl'),
     coverPublicId: emptyToNull(formData.get('coverPublicId')),
     pdfUrl:        emptyToNull(formData.get('pdfUrl')),
