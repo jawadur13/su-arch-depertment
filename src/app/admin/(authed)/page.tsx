@@ -58,6 +58,7 @@ export default async function DashboardHome() {
     alumniCount, clubCount, faqCount, visitorCount,
     researchPaperCount, busRouteCount, syllabusCount,
     admissionNoticeCount, prospectusEntryCount,
+    departmentLayoutCount, serviceCharterCount,
     admissionRequirementsConfigured, programFeeStructureCount,
     admissionTransferCreditsConfigured, waiverScholarshipLandingConfigured,
     waiverCategoryCount, scholarshipCount,
@@ -85,6 +86,8 @@ export default async function DashboardHome() {
     prisma.syllabus.count(),
     prisma.admissionNotice.count(),
     prisma.prospectusEntry.count(),
+    prisma.departmentLayout.count(),
+    prisma.serviceCharter.count(),
     prisma.admissionRequirements.count(),
     prisma.programFeeStructure.count(),
     prisma.admissionTransferCredits.count(),
@@ -145,6 +148,8 @@ export default async function DashboardHome() {
           <StatCard label="Syllabus" value={syllabusCount} />
           <StatCard label="Admission Notices" value={admissionNoticeCount} />
           <StatCard label="Prospectus Entries" value={prospectusEntryCount} />
+          <StatCard label="Department Layout Entries" value={departmentLayoutCount} />
+          <StatCard label="Service and Charter Entries" value={serviceCharterCount} />
           <StatCard label="Admission Requirements"
                     value={admissionRequirementsConfigured ? 'Configured' : 'Not configured'}
                     stringValue />
@@ -344,6 +349,18 @@ export default async function DashboardHome() {
             icon={FileText}
             title="Manage Prospectus"
             desc="Program prospectus PDFs for /admission/prospectus"
+          />
+          <ActionCard
+            href="/admin/department-layout"
+            icon={FileText}
+            title="Manage Department Layout"
+            desc="Layout documents for /about/department-layout"
+          />
+          <ActionCard
+            href="/admin/service-charter"
+            icon={FileText}
+            title="Manage Service and Charter"
+            desc="Charter documents for /about/service-charter"
           />
           <ActionCard
             href="/admin/admission-requirements"

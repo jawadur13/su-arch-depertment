@@ -18,6 +18,8 @@ const staticRoutes: { path: string; priority: number; changeFrequency: 'weekly' 
   { path: '/admission/waiver-scholarship', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/admission/notice', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/admission/prospectus', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/about/department-layout', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/about/service-charter', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/faculty-member', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/student-society/notice-board', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/student-society/events', priority: 0.8, changeFrequency: 'weekly' },

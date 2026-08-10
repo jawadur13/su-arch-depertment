@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { ListItem } from './ListItem';
+import { ListItem } from '@/components/ui/LinkifiedText';
 
 const VISIBLE_COUNT = 10;
 

@@ -5,6 +5,7 @@ import { Calendar, Tag, ArrowRight, ChevronRight, Home } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import { prisma } from '@/lib/db';
 import { getNewsBySlug, getNewsSlugs } from '@/lib/identity';
+import { LinkifiedText } from '@/components/ui/LinkifiedText';
 
 export async function generateStaticParams() {
   const slugs = await getNewsSlugs();
@@ -138,7 +139,7 @@ export default async function NewsDetailPage({
                 {metaRows.map(({ label, value }) => (
                   <div key={label} className="contents">
                     <dt className="font-semibold text-primary">{label}</dt>
-                    <dd className="text-gray-700">{value}</dd>
+                    <dd className="text-gray-700"><LinkifiedText text={value} /></dd>
                   </div>
                 ))}
               </dl>

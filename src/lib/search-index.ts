@@ -41,6 +41,8 @@ const staticPages: SearchItem[] = [
   { title: 'Laboratory Facility', type: 'Page', href: '/about/laboratory-facility', description: 'Departmental labs and equipment' },
   { title: 'Lab Facility', type: 'Page', href: '/about/lab-facility', description: 'List of all departmental labs' },
   { title: 'Mecha Club', type: 'Page', href: '/about/mecha-club', description: 'Sonargaon University Mecha Club (SUMEC)' },
+  { title: 'Department Layout', type: 'Page', href: '/about/department-layout', description: 'Department layout documents' },
+  { title: 'Service and Charter', type: 'Page', href: '/about/service-charter', description: 'Service and charter documents' },
 
   // Faculty
   { title: 'Faculty Members', type: 'Page', href: '/faculty-member', description: 'List of all faculty members' },
@@ -91,6 +93,8 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     syllabusRows,
     admissionNoticeRows,
     prospectusEntryRows,
+    departmentLayoutRows,
+    serviceCharterRows,
     feeStructureRows,
     transferCreditsRow,
     waiverCategoryRows,
@@ -151,6 +155,14 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
       select: { subject: true, refNo: true, displayDate: true, slug: true },
     }),
     prisma.prospectusEntry.findMany({
+      select: { title: true, shortTitle: true, department: true, level: true, slug: true },
+    }),
+    // About — Department Layout + Service and Charter. Same shape as
+    // Prospectus; all rows share their respective /about/* list page.
+    prisma.departmentLayout.findMany({
+      select: { title: true, shortTitle: true, department: true, level: true, slug: true },
+    }),
+    prisma.serviceCharter.findMany({
       select: { title: true, shortTitle: true, department: true, level: true, slug: true },
     }),
     // Phase 8b — ProgramFeeStructure search entries. AdmissionRequirements
@@ -321,6 +333,24 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     type: 'Prospectus',
   }));
 
+  // Department Layout entries — all rows surface; they all share the
+  // /about/department-layout list page.
+  const departmentLayoutItems: SearchItem[] = departmentLayoutRows.map((p) => ({
+    title: p.title,
+    description: `${p.department} · ${p.level}`,
+    href: '/about/department-layout',
+    type: 'DepartmentLayout',
+  }));
+
+  // Service and Charter entries — all rows surface; they all share
+  // the /about/service-charter list page.
+  const serviceCharterItems: SearchItem[] = serviceCharterRows.map((p) => ({
+    title: p.title,
+    description: `${p.department} · ${p.level}`,
+    href: '/about/service-charter',
+    type: 'ServiceCharter',
+  }));
+
   // ProgramFeeStructure (Phase 8b — DB). Per-program fee entries.
   // introOverline carries the user-facing program label (e.g.
   // "B.Sc. in Mechanical Engineering (ME)"). All entries link to
@@ -395,6 +425,8 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     ...syllabusItems,
     ...admissionNoticeItems,
     ...prospectusItems,
+    ...departmentLayoutItems,
+    ...serviceCharterItems,
     ...feeItems,
     ...transferCreditsItems,
     ...waiverCategoryItems,

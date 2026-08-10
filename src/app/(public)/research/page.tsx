@@ -2,6 +2,7 @@ import { Calendar, MapPin, Users, FileText } from 'lucide-react';
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
 import { getResearchPapers, getPageHero } from '@/lib/identity';
+import { LinkifiedText } from '@/components/ui/LinkifiedText';
 
 export const metadata = {
   title: 'Research — Department of Architecture',
@@ -29,8 +30,7 @@ export default async function ResearchPage() {
           <p className="text-[15px] md:text-[16px] leading-[1.85] text-gray-700">
             A selection of research publications by faculty and students of the
             Department of Architecture, Sonargaon University, spanning
-            thermodynamics, fluid mechanics, materials science, energy systems,
-            and more.
+            urban design, heritage conservation, sustainable design, and more.
           </p>
           <p className="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-primary bg-primary/5 px-4 py-1.5 rounded-full">
             <FileText size={14} />
@@ -57,7 +57,7 @@ export default async function ResearchPage() {
 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-[15px] md:text-[16px] font-bold leading-snug text-primary mb-3">
-                    {paper.title}
+                    <LinkifiedText text={paper.title} />
                   </h3>
 
                   <div className="flex flex-wrap gap-x-5 gap-y-2 mb-3 text-[12.5px]">

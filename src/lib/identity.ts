@@ -408,6 +408,16 @@ export const getProspectusEntries = cache(async () => {
   return prisma.prospectusEntry.findMany({ orderBy: { displayOrder: 'asc' } });
 });
 
+// About — Department Layout + Service and Charter (same shape as
+// ProspectusEntry; each has its own /about/* list page + CMS panel).
+export const getDepartmentLayouts = cache(async () => {
+  return prisma.departmentLayout.findMany({ orderBy: { displayOrder: 'asc' } });
+});
+
+export const getServiceCharters = cache(async () => {
+  return prisma.serviceCharter.findMany({ orderBy: { displayOrder: 'asc' } });
+});
+
 // ─────────────────────────────────────────────────────────────────
 //  Admission CMS Part 2 — Phase 8b
 //    /admission/requirements reads the singleton.

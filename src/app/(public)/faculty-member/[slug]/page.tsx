@@ -11,7 +11,7 @@ import {
   getUniversityIdentity,
 } from '@/lib/identity';
 import { type SectionContent } from '@/lib/faculty-data';
-import { ListItem } from './ListItem';
+import { ListItem } from '@/components/ui/LinkifiedText';
 import ExpandableList from './ExpandableList';
 
 // Pre-render every current slug at build time; Next.js defaults to

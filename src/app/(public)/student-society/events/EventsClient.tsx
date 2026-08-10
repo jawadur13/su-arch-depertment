@@ -32,6 +32,11 @@ const CATEGORY_STYLES: Record<string, string> = {
   Partnership: 'bg-sky-100 text-sky-700',
   Seminar: 'bg-rose-100 text-rose-700',
   Exhibition: 'bg-primary/10 text-primary',
+  'Study Tour': 'bg-teal-100 text-teal-700',
+  Workshop: 'bg-orange-100 text-orange-700',
+  Competition: 'bg-red-100 text-red-700',
+  Event: 'bg-indigo-100 text-indigo-700',
+  'Book Launch': 'bg-fuchsia-100 text-fuchsia-700',
 };
 
 const STATUS_STYLES: Record<string, string> = {
@@ -43,6 +48,7 @@ const STATUS_STYLES: Record<string, string> = {
 const STATUS_FILTERS: Filter[] = ['All', 'Current', 'Upcoming'];
 const CATEGORY_FILTERS = [
   'Sports', 'Industrial Visit', 'Achievement', 'Partnership', 'Seminar', 'Exhibition',
+  'Study Tour', 'Workshop', 'Competition', 'Event', 'Book Launch',
 ] as const;
 
 function formatDate(row: EventCardRow): string | null {

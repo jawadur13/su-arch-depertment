@@ -979,6 +979,57 @@ model ProspectusEntry {
 }
 
 // ─────────────────────────────────────────────────────────────────
+//  About — Department Layout + Service and Charter
+//    Two document libraries under /about, same shape as
+//    ProspectusEntry (cover + optional PDF, UG/PG filter on the
+//    public list page). Kept as separate tables since each is its
+//    own CMS panel with its own reorder scope.
+// ─────────────────────────────────────────────────────────────────
+model DepartmentLayout {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  shortTitle    String
+  department    String
+  // level — 'Undergraduate' | 'Postgraduate'. Zod-validated.
+  level         String
+  coverUrl      String
+  coverPublicId String?
+  pdfUrl        String?
+  pdfPublicId   String?
+  pdfFileName   String?
+  displayOrder  Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([displayOrder])
+  @@index([level])
+  @@map("department_layout")
+}
+
+model ServiceCharter {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  shortTitle    String
+  department    String
+  // level — 'Undergraduate' | 'Postgraduate'. Zod-validated.
+  level         String
+  coverUrl      String
+  coverPublicId String?
+  pdfUrl        String?
+  pdfPublicId   String?
+  pdfFileName   String?
+  displayOrder  Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([displayOrder])
+  @@index([level])
+  @@map("service_charter")
+}
+
+// ─────────────────────────────────────────────────────────────────
 //  Phase 8b — Admission CMS Part 2 (Requirements + Tuition Fees)
 // ─────────────────────────────────────────────────────────────────
 

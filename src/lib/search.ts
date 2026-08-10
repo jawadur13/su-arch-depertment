@@ -31,6 +31,9 @@ export interface SearchItem {
     // Phase 8a
     | 'AdmissionNotice'
     | 'Prospectus'
+    // About — Department Layout + Service and Charter
+    | 'DepartmentLayout'
+    | 'ServiceCharter'
     // Phase 8b
     | 'Fees'
     // Phase 8c

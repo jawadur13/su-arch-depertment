@@ -279,6 +279,10 @@ export const uploadKindSchema = z.enum([
   'admission-notice-file',
   'prospectus-cover',
   'prospectus-pdf',
+  'department-layout-cover',
+  'department-layout-pdf',
+  'service-charter-cover',
+  'service-charter-pdf',
   // Phase 10
   'contact-hero',
   // Phase 12
@@ -569,6 +573,11 @@ export const eventCategoryEnum = z.enum([
   'Partnership',
   'Seminar',
   'Exhibition',
+  'Study Tour',
+  'Workshop',
+  'Competition',
+  'Event',
+  'Book Launch',
 ]);
 
 export const eventStatusEnum = z.enum(['Past', 'Current', 'Upcoming']);
@@ -827,6 +836,45 @@ export const prospectusEntryCreateSchema = z.object({
 });
 
 export const prospectusEntryUpdateSchema = prospectusEntryCreateSchema;
+
+// ─── DepartmentLayout + ServiceCharter ──────────────────────────
+//
+// Same shape as ProspectusEntry — two document libraries under
+// /about (see schema.prisma for the model comment).
+//
+export const departmentLayoutLevelEnum = z.enum(['Undergraduate', 'Postgraduate']);
+
+export const departmentLayoutCreateSchema = z.object({
+  slug:          z.string().min(1).max(160).regex(slugRegexHub, 'Slug must be lowercase letters, numbers, and hyphens only'),
+  title:         z.string().min(1).max(500),
+  shortTitle:    z.string().min(1).max(300),
+  department:    z.string().min(1).max(300),
+  level:         departmentLayoutLevelEnum,
+  coverUrl:      z.string().min(1),
+  coverPublicId: optionalNullableString,
+  pdfUrl:        optionalNullableString,
+  pdfPublicId:   optionalNullableString,
+  pdfFileName:   optionalNullableString,
+});
+
+export const departmentLayoutUpdateSchema = departmentLayoutCreateSchema;
+
+export const serviceCharterLevelEnum = z.enum(['Undergraduate', 'Postgraduate']);
+
+export const serviceCharterCreateSchema = z.object({
+  slug:          z.string().min(1).max(160).regex(slugRegexHub, 'Slug must be lowercase letters, numbers, and hyphens only'),
+  title:         z.string().min(1).max(500),
+  shortTitle:    z.string().min(1).max(300),
+  department:    z.string().min(1).max(300),
+  level:         serviceCharterLevelEnum,
+  coverUrl:      z.string().min(1),
+  coverPublicId: optionalNullableString,
+  pdfUrl:        optionalNullableString,
+  pdfPublicId:   optionalNullableString,
+  pdfFileName:   optionalNullableString,
+});
+
+export const serviceCharterUpdateSchema = serviceCharterCreateSchema;
 
 // ─────────────────────────────────────────────────────────────────
 //  Phase 8b — Admission CMS Part 2 (Requirements + Tuition Fees)
