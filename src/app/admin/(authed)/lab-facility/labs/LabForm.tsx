@@ -40,8 +40,11 @@ export default function LabForm({ initial }: { initial: Lab | null }) {
         <TextField label="Tagline" name="tagline" required
                    defaultValue={initial?.tagline ?? ''}
                    placeholder="Measure flow, pressure, and the behaviour of liquids." />
-        <TextAreaField label="Description" name="description" required rows={5}
+        <TextAreaField label="Description" name="description" required rows={8}
                        defaultValue={initial?.description ?? ''} />
+        <p className="text-xs text-gray-500 -mt-2">
+          One line per detail is fine — line breaks are preserved on the public page (e.g. for a combined entry like &ldquo;Studio&rdquo; listing each room).
+        </p>
       </Card>
 
       <Card title="Hero image (optional)">

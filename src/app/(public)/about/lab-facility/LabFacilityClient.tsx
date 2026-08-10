@@ -173,7 +173,7 @@ export default function LabFacilityClient({ labs }: Props) {
 
           <p className="text-base md:text-lg text-accent font-medium mb-6">{active.tagline}</p>
 
-          <p className="text-[15px] md:text-base text-gray-700 leading-[1.85] mb-8">
+          <p className="text-[15px] md:text-base text-gray-700 leading-[1.85] mb-8 whitespace-pre-line">
             {active.description}
           </p>
 
