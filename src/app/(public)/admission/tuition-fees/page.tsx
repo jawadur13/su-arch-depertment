@@ -17,7 +17,7 @@ export const metadata = {
 // ─── Json column shapes (defensive coerce) ───────────────────────
 
 type OverviewStat = { iconName: string; label: string; value: string };
-type FeeTier = { gpa: string; perCredit: number; total: number };
+type FeeTier = { gpa: string; waiver: string; credits: string; perCredit: number; total: number };
 type FeeGroup = { background: string; tiers: FeeTier[] };
 type FeeShift = {
   iconName: string;
@@ -46,6 +46,8 @@ function coerceTiers(v: unknown): FeeTier[] {
     .filter((r): r is Record<string, unknown> => typeof r === 'object' && r !== null)
     .map((r) => ({
       gpa:       typeof r.gpa       === 'string' ? r.gpa       : '',
+      waiver:    typeof r.waiver    === 'string' ? r.waiver    : '',
+      credits:   typeof r.credits   === 'string' ? r.credits   : '',
       perCredit: typeof r.perCredit === 'number' ? r.perCredit : 0,
       total:     typeof r.total     === 'number' ? r.total     : 0,
     }))
@@ -210,11 +212,17 @@ export default async function TuitionFeesPage() {
                                     {group.background} Background
                                   </h4>
                                   <div className="overflow-x-auto -mx-2">
-                                    <table className="w-full min-w-[480px] border-collapse">
+                                    <table className="w-full min-w-[620px] border-collapse">
                                       <thead>
                                         <tr className="border-b-2 border-primary/15 text-left">
                                           <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500">
                                             GPA Range
+                                          </th>
+                                          <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500 text-right">
+                                            Waiver
+                                          </th>
+                                          <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500 text-right">
+                                            Credits
                                           </th>
                                           <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500 text-right">
                                             Per Credit
@@ -234,6 +242,12 @@ export default async function TuitionFeesPage() {
                                               <span className="inline-block px-3 py-1 bg-primary/8 text-primary text-sm font-semibold rounded">
                                                 GPA {tier.gpa}
                                               </span>
+                                            </td>
+                                            <td className="px-3 py-4 text-right font-display font-bold text-primary">
+                                              {tier.waiver}
+                                            </td>
+                                            <td className="px-3 py-4 text-right text-gray-600">
+                                              {tier.credits}
                                             </td>
                                             <td className="px-3 py-4 text-right font-display font-bold text-gray-800">
                                               {fmt(tier.perCredit)}
