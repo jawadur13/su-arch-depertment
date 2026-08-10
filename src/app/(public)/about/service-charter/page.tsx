@@ -2,6 +2,7 @@ import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
 import { getServiceCharters, getPageHero } from '@/lib/identity';
 import ServiceCharterClient from './ServiceCharterClient';
+import ServiceDirectory from './ServiceDirectory';
 
 export const metadata = {
   title: 'Service and Charter — Department of Architecture',
@@ -13,6 +14,7 @@ export default async function ServiceCharterPage() {
     getServiceCharters(),
     getPageHero('about-service-and-charter'),
   ]);
+  const serviceItems = entries[0]?.serviceItems ?? [];
   const items = entries.map((p) => ({
     slug: p.slug,
     title: p.title,
@@ -32,6 +34,9 @@ export default async function ServiceCharterPage() {
       contentClassName="bg-gray-50 py-12 md:py-20"
     >
       <Container>
+        <div className="max-w-4xl mx-auto">
+          <ServiceDirectory items={serviceItems} />
+        </div>
         <ServiceCharterClient items={items} />
       </Container>
     </PageShell>

@@ -5,6 +5,7 @@ import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import type { ServiceCharter } from '@prisma/client';
 import ImageUploader from '@/components/admin/ImageUploader';
+import ServiceItemsEditor from '@/components/admin/ServiceItemsEditor';
 import {
   createServiceCharterAction,
   updateServiceCharterAction,
@@ -67,6 +68,15 @@ export default function ServiceCharterForm({ initial }: { initial: ServiceCharte
         <input type="hidden" name="pdfUrl" value={pdf.url} />
         <input type="hidden" name="pdfPublicId" value={pdf.publicId} />
         <input type="hidden" name="pdfFileName" value={pdf.fileName} />
+      </Card>
+
+      <Card title="Service directory">
+        <p className="text-xs text-gray-500 -mt-2">
+          The numbered &ldquo;who to ask, and where&rdquo; list shown on the public page above the download card.
+          Mark each item&apos;s scope as Department (this department&apos;s own coordinator) or University-wide
+          (a shared central office, same for every department).
+        </p>
+        <ServiceItemsEditor name="serviceItems" initialValue={initial?.serviceItems ?? []} />
       </Card>
 
       {state.ok === false && (

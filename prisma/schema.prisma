@@ -1067,6 +1067,13 @@ model ServiceCharter {
   pdfUrl        String?
   pdfPublicId   String?
   pdfFileName   String?
+  // Numbered "who to ask, and where" directory shown on the public
+  // page above the PDF download card — [{ title, scope, steps: [{
+  // text, linkLabel?, linkHref? }], contactName?, contactRole?,
+  // contactPhone?, contactEmail?, contactRoom? }]. scope distinguishes
+  // items handled by the department itself from university-wide
+  // shared offices (admissions, accounts, examinations, etc).
+  serviceItems  Json     @default("[]")
   displayOrder  Int
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt

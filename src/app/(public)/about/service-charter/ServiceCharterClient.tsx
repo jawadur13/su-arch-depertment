@@ -1,8 +1,5 @@
-'use client';
-
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
-import { Search, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 export interface ServiceCharterItem {
   slug: string;
@@ -14,57 +11,26 @@ export interface ServiceCharterItem {
 }
 
 export default function ServiceCharterClient({ items }: { items: ServiceCharterItem[] }) {
-  const [query, setQuery] = useState('');
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return items;
-    return items.filter((p) => (
-      p.title.toLowerCase().includes(q) ||
-      p.department.toLowerCase().includes(q)
-    ));
-  }, [items, query]);
-
   return (
     <>
-      {/* Search */}
-      <div className="relative mb-3">
-        <Search
-          size={18}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-        />
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search charters..."
-          className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-200 bg-white text-sm placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15 transition"
-        />
-      </div>
-
-      <p className="text-sm text-gray-500 mb-8">
-        Showing <span className="font-semibold text-primary">{filtered.length}</span>{' '}
-        {filtered.length === 1 ? 'charter' : 'charters'}
-      </p>
-
       {/* Charter cards */}
-      {filtered.length === 0 ? (
+      {items.length === 0 ? (
         <div className="bg-white rounded-2xl border border-dashed border-gray-300 p-12 text-center">
-          <p className="text-gray-500">No charters match your search.</p>
+          <p className="text-gray-500">No charters yet.</p>
         </div>
       ) : (
         <div
           className={
-            filtered.length === 1
+            items.length === 1
               ? 'flex justify-center'
               : 'grid sm:grid-cols-2 lg:grid-cols-3 gap-6'
           }
         >
-          {filtered.map((p) => (
+          {items.map((p) => (
             <article
               key={p.slug}
               className={`bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow overflow-hidden flex flex-col ${
-                filtered.length === 1 ? 'w-full max-w-md' : ''
+                items.length === 1 ? 'w-full max-w-md' : ''
               }`}
             >
               {/* Cover */}

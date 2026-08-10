@@ -1,7 +1,8 @@
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
-import { getDepartmentLayouts, getPageHero } from '@/lib/identity';
+import { getDepartmentLayouts, getPageHero, getUniversityIdentity } from '@/lib/identity';
 import DepartmentLayoutClient from './DepartmentLayoutClient';
+import OfficeDirectory from './OfficeDirectory';
 
 export const metadata = {
   title: 'Department Layout — Department of Architecture',
@@ -9,9 +10,10 @@ export const metadata = {
 };
 
 export default async function DepartmentLayoutPage() {
-  const [entries, hero] = await Promise.all([
+  const [entries, hero, university] = await Promise.all([
     getDepartmentLayouts(),
     getPageHero('about-department-layout'),
+    getUniversityIdentity(),
   ]);
   const items = entries.map((p) => ({
     slug: p.slug,
@@ -32,6 +34,9 @@ export default async function DepartmentLayoutPage() {
       contentClassName="bg-gray-50 py-12 md:py-20"
     >
       <Container>
+        <div className="max-w-3xl mx-auto">
+          <OfficeDirectory address={university?.address ?? '147/I, Green Road, Panthapath, Tejgaon, Dhaka'} />
+        </div>
         <DepartmentLayoutClient items={items} />
       </Container>
     </PageShell>

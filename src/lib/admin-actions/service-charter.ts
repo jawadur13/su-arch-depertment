@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db';
 import { getSession } from '@/lib/auth-server';
 import {
@@ -34,6 +35,15 @@ function revalidateServiceCharterSurfaces() {
 }
 
 function readServiceCharterRow(formData: FormData) {
+  let serviceItems: unknown = [];
+  const raw = getStr(formData, 'serviceItems');
+  if (raw) {
+    try {
+      serviceItems = JSON.parse(raw);
+    } catch {
+      serviceItems = [];
+    }
+  }
   return {
     slug:          getStr(formData, 'slug'),
     title:         getStr(formData, 'title'),
@@ -44,6 +54,7 @@ function readServiceCharterRow(formData: FormData) {
     pdfUrl:        emptyToNull(formData.get('pdfUrl')),
     pdfPublicId:   emptyToNull(formData.get('pdfPublicId')),
     pdfFileName:   emptyToNull(formData.get('pdfFileName')),
+    serviceItems,
   };
 }
 
@@ -63,7 +74,13 @@ export async function createServiceCharterAction(
   const displayOrder = (last?.displayOrder ?? -1) + 1;
 
   try {
-    await prisma.serviceCharter.create({ data: { ...parsed.data, displayOrder } });
+    await prisma.serviceCharter.create({
+      data: {
+        ...parsed.data,
+        serviceItems: parsed.data.serviceItems as unknown as Prisma.InputJsonValue,
+        displayOrder,
+      },
+    });
   } catch (e: unknown) {
     if ((e as { code?: string })?.code === 'P2002') {
       return { ok: false, error: `slug "${parsed.data.slug}" is already in use` };
@@ -88,7 +105,13 @@ export async function updateServiceCharterAction(
   }
 
   try {
-    await prisma.serviceCharter.update({ where: { id }, data: parsed.data });
+    await prisma.serviceCharter.update({
+      where: { id },
+      data: {
+        ...parsed.data,
+        serviceItems: parsed.data.serviceItems as unknown as Prisma.InputJsonValue,
+      },
+    });
   } catch (e: unknown) {
     const code = (e as { code?: string })?.code;
     if (code === 'P2025') return { ok: false, error: 'Service charter entry not found' };

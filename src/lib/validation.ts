@@ -859,6 +859,23 @@ export const departmentLayoutCreateSchema = z.object({
 
 export const departmentLayoutUpdateSchema = departmentLayoutCreateSchema;
 
+const serviceCharterStepSchema = z.object({
+  text:      z.string().min(1).max(500),
+  linkLabel: z.string().max(200).optional().nullable(),
+  linkHref:  z.string().max(500).optional().nullable(),
+});
+
+const serviceCharterItemSchema = z.object({
+  title:        z.string().min(1).max(300),
+  scope:        z.enum(['department', 'university']).default('department'),
+  steps:        z.array(serviceCharterStepSchema).min(1),
+  contactName:  z.string().max(200).optional().nullable(),
+  contactRole:  z.string().max(200).optional().nullable(),
+  contactPhone: z.string().max(100).optional().nullable(),
+  contactEmail: z.string().max(200).optional().nullable(),
+  contactRoom:  z.string().max(200).optional().nullable(),
+});
+
 export const serviceCharterCreateSchema = z.object({
   slug:          z.string().min(1).max(160).regex(slugRegexHub, 'Slug must be lowercase letters, numbers, and hyphens only'),
   title:         z.string().min(1).max(500),
@@ -869,6 +886,7 @@ export const serviceCharterCreateSchema = z.object({
   pdfUrl:        optionalNullableString,
   pdfPublicId:   optionalNullableString,
   pdfFileName:   optionalNullableString,
+  serviceItems:  z.array(serviceCharterItemSchema).default([]),
 });
 
 export const serviceCharterUpdateSchema = serviceCharterCreateSchema;
