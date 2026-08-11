@@ -9,6 +9,7 @@ import {
   getFacultySlugs,
   getDepartmentIdentity,
   getUniversityIdentity,
+  getPageHero,
 } from '@/lib/identity';
 import { type SectionContent } from '@/lib/faculty-data';
 import { ListItem } from '@/components/ui/LinkifiedText';
@@ -62,10 +63,6 @@ const PLACEHOLDER = (
   <p className="text-gray-400 italic text-sm">Information will be updated soon.</p>
 );
 
-// Same hero used on the /faculty-member listing page — a sensible
-// shared fallback for the ~2/3 of faculty without their own photo,
-// rather than PageShell's generic default.
-const FALLBACK_HERO = 'https://res.cloudinary.com/ynfut7mx/image/upload/f_auto,q_auto:good/v1786254734/sonargaon-arch/about/ddznz330sr8n4k2tzjrt.png';
 
 function renderSection(value: SectionContent | null | undefined) {
   if (value == null) return PLACEHOLDER;
@@ -105,10 +102,11 @@ export default async function FacultyDetailPage({
   // J3 — office address wired from UniversityIdentity and department
   // name from DepartmentIdentity, both via the existing identity
   // helpers (React.cache dedups across the page).
-  const [member, dept, uni] = await Promise.all([
+  const [member, dept, uni, hero] = await Promise.all([
     getFacultyBySlug(slug),
     getDepartmentIdentity(),
     getUniversityIdentity(),
+    getPageHero('faculty-member'),
   ]);
   if (!member) notFound();
 
@@ -120,7 +118,7 @@ export default async function FacultyDetailPage({
     <PageShell
       title={member.name}
       overline="Faculty"
-      image={member.photoUrl ?? FALLBACK_HERO}
+      image={hero?.heroImageUrl ?? '/assets/faculty-hero.webp'}
       contentClassName="bg-gray-50 py-12 md:py-20"
     >
       <Container>
