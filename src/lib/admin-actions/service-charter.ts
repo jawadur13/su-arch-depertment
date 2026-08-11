@@ -28,7 +28,7 @@ async function requireAuth(): Promise<ActionResult | null> {
 }
 
 function revalidateServiceCharterSurfaces() {
-  revalidatePath('/about/service-charter');
+  revalidatePath('/student-society/service-charter');
   revalidatePath('/admin/service-charter');
   revalidatePath('/admin');
   revalidatePath('/', 'layout');

@@ -362,7 +362,7 @@ export default async function DashboardHome() {
             href="/admin/service-charter"
             icon={FileText}
             title="Manage Service and Charter"
-            desc="Charter documents for /about/service-charter"
+            desc="Charter documents for /student-society/service-charter"
           />
           <ActionCard
             href="/admin/admission-requirements"

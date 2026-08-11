@@ -1,8 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import { useMemo, useState } from 'react';
-import { Search, Download } from 'lucide-react';
+import { Search, Download, ExternalLink } from 'lucide-react';
 
 type Level = 'Undergraduate' | 'Postgraduate';
 
@@ -11,7 +10,7 @@ export interface ProspectusItem {
   title: string;
   shortTitle: string;
   department: string;
-  level: string; // 'Undergraduate' | 'Postgraduate' (Zod-validated upstream)
+  level: string;
   cover: string;
   pdf: string;
 }
@@ -38,7 +37,7 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
   return (
     <>
       {/* Search + Filters */}
-      <div className="flex flex-col lg:flex-row gap-3 lg:items-center mb-3">
+      <div className="flex flex-col lg:flex-row gap-3 lg:items-center mb-8">
         <div className="relative flex-1">
           <Search
             size={18}
@@ -79,7 +78,7 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
         {filtered.length === 1 ? 'program' : 'programs'}
       </p>
 
-      {/* Program cards */}
+      {/* Prospectus items */}
       {filtered.length === 0 ? (
         <div className="bg-white rounded-2xl border border-dashed border-gray-300 p-12 text-center">
           {active === 'Postgraduate' && !query ? (
@@ -96,36 +95,13 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
           )}
         </div>
       ) : (
-        <div
-          className={
-            filtered.length === 1
-              ? 'flex justify-center'
-              : 'grid sm:grid-cols-2 lg:grid-cols-3 gap-6'
-          }
-        >
+        <div className="space-y-12">
           {filtered.map((p) => (
-            <article
-              key={p.slug}
-              className={`bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow overflow-hidden flex flex-col ${
-                filtered.length === 1 ? 'w-full max-w-md' : ''
-              }`}
-            >
-              {/* Cover */}
-              <div className="bg-gray-50">
-                <Image
-                  src={p.cover}
-                  alt={p.title}
-                  width={600}
-                  height={800}
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="block w-full h-auto"
-                />
-              </div>
-
-              {/* Body */}
-              <div className="p-5 flex-1 flex flex-col">
+            <article key={p.slug} className="space-y-6">
+              {/* Header */}
+              <div>
                 <span
-                  className={`inline-block w-fit px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-3 ${
+                  className={`inline-block px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-4 ${
                     p.level === 'Undergraduate'
                       ? 'bg-primary/8 text-primary'
                       : 'bg-accent/10 text-accent'
@@ -133,27 +109,67 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
                 >
                   {p.level}
                 </span>
+                <div className="flex items-start justify-between gap-4">
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-primary leading-tight flex-1">
+                    {p.shortTitle}
+                  </h2>
+                  {p.pdf && (
+                    <a
+                      href={p.pdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 inline-flex items-center gap-2 text-primary hover:text-accent transition-colors text-sm font-medium whitespace-nowrap"
+                    >
+                      Open in a new tab
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
+                </div>
+                <p className="text-gray-600 mt-2">{p.department}</p>
+              </div>
 
-                <h3 className="font-display text-base md:text-lg font-bold text-primary leading-snug mb-1">
-                  {p.shortTitle}
-                </h3>
-                <p className="text-sm text-gray-600 mb-5">{p.department}</p>
+              {/* PDF Preview */}
+              {p.pdf ? (
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                  <iframe
+                    src={`${p.pdf}#toolbar=0`}
+                    title={p.title}
+                    className="w-full"
+                    style={{ height: '600px' }}
+                  />
+                </div>
+              ) : (
+                <div className="bg-white rounded-xl border border-dashed border-gray-300 p-12 text-center">
+                  <p className="text-gray-500">PDF coming soon</p>
+                </div>
+              )}
 
-                {p.pdf ? (
+              {/* Download Card */}
+              {p.pdf && (
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow p-6 flex items-center gap-6">
+                  <div className="shrink-0 w-16 h-16 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                    <Download size={28} className="text-white" />
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display text-lg font-bold text-primary leading-snug">
+                      {p.shortTitle}
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Download the complete prospectus PDF
+                    </p>
+                  </div>
+
                   <a
                     href={p.pdf}
                     download
-                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-md transition-colors"
+                    className="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-lg transition-colors whitespace-nowrap"
                   >
-                    <Download size={16} />
-                    Download
+                    <Download size={18} />
+                    Download PDF
                   </a>
-                ) : (
-                  <span className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-gray-100 text-gray-400 text-sm font-semibold rounded-md cursor-not-allowed">
-                    PDF coming soon
-                  </span>
-                )}
-              </div>
+                </div>
+              )}
             </article>
           ))}
         </div>

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
-import { Search, Download } from 'lucide-react';
+import { Search, Download, ExternalLink } from 'lucide-react';
 
 export type SyllabusCardRow = {
   slug: string;
@@ -127,14 +127,25 @@ export default function SyllabusClient({ items }: { items: readonly SyllabusCard
                 <p className="text-sm text-gray-700 leading-relaxed mb-5">{s.summary}</p>
 
                 {s.pdfUrl ? (
-                  <a
-                    href={s.pdfUrl}
-                    download
-                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-md transition-colors"
-                  >
-                    <Download size={16} />
-                    Download Syllabus
-                  </a>
+                  <div className="mt-auto space-y-3 flex flex-col">
+                    <a
+                      href={s.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-lg transition-colors"
+                    >
+                      <ExternalLink size={18} />
+                      View Syllabus
+                    </a>
+                    <a
+                      href={s.pdfUrl}
+                      download
+                      className="inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-white hover:bg-gray-50 text-primary text-sm font-semibold rounded-lg border-2 border-primary transition-colors"
+                    >
+                      <Download size={18} />
+                      Download Syllabus
+                    </a>
+                  </div>
                 ) : (
                   <span className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-gray-100 text-gray-400 text-sm font-semibold rounded-md cursor-not-allowed">
                     PDF not uploaded yet

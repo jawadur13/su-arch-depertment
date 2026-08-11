@@ -28,16 +28,18 @@ export default async function ServiceCharterPage() {
     <PageShell
       title={hero?.heroTitle ?? 'Service and Charter'}
       subtitle={hero?.heroSubtitle ?? undefined}
-      overline={hero?.heroOverline ?? 'About'}
+      overline={hero?.heroOverline ?? 'Student Society'}
       image={hero?.heroImageUrl ?? '/assets/mission-vision-hero.webp'}
       imagePosition={hero ? `center ${hero.heroImageVerticalPercent}%` : 'top'}
       contentClassName="bg-gray-50 py-12 md:py-20"
     >
       <Container>
-        <div className="max-w-4xl mx-auto">
+        <div className="space-y-10">
           <ServiceDirectory items={serviceItems} />
+          <div>
+            <ServiceCharterClient items={items} />
+          </div>
         </div>
-        <ServiceCharterClient items={items} />
       </Container>
     </PageShell>
   );

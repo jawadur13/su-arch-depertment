@@ -42,7 +42,7 @@ const staticPages: SearchItem[] = [
   { title: 'Lab Facility', type: 'Page', href: '/about/lab-facility', description: 'List of all departmental labs' },
   { title: 'SU Innovation Hub', type: 'Page', href: '/about/innovation-hub', description: 'Sonargaon University Mecha Club (SU Innovation Hub)' },
   { title: 'Department Layout', type: 'Page', href: '/about/department-layout', description: 'Department layout documents' },
-  { title: 'Service and Charter', type: 'Page', href: '/about/service-charter', description: 'Service and charter documents' },
+  { title: 'Service and Charter', type: 'Page', href: '/student-society/service-charter', description: 'Service and charter documents' },
 
   // Faculty
   { title: 'Faculty Members', type: 'Page', href: '/faculty-member', description: 'List of all faculty members' },
@@ -350,11 +350,11 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
   }));
 
   // Service and Charter entries — all rows surface; they all share
-  // the /about/service-charter list page.
+  // the /student-society/service-charter list page.
   const serviceCharterItems: SearchItem[] = serviceCharterRows.map((p) => ({
     title: p.title,
     description: p.department,
-    href: '/about/service-charter',
+    href: '/student-society/service-charter',
     type: 'ServiceCharter',
   }));
 

@@ -43,12 +43,6 @@ export default function ServiceCharterForm({ initial }: { initial: ServiceCharte
                    defaultValue={initial?.department ?? 'Architecture'} />
       </Card>
 
-      <Card title="Cover image">
-        <ImageUploader kind="service-charter-cover" name="cover"
-                       initialUrl={initial?.coverUrl}
-                       initialPublicId={initial?.coverPublicId} />
-      </Card>
-
       <Card title="Charter PDF">
         <p className="text-xs text-gray-500 -mt-2">
           The &ldquo;Download&rdquo; button on the public card links to this PDF.

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Download } from 'lucide-react';
+import { Download, ExternalLink } from 'lucide-react';
 
 export interface DepartmentLayoutItem {
   slug: string;
@@ -53,14 +53,25 @@ export default function DepartmentLayoutClient({ items }: { items: DepartmentLay
                 <p className="text-sm text-gray-600 mb-5">{p.department}</p>
 
                 {p.pdf ? (
-                  <a
-                    href={p.pdf}
-                    download
-                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-md transition-colors"
-                  >
-                    <Download size={16} />
-                    Download
-                  </a>
+                  <div className="mt-auto space-y-3 flex flex-col">
+                    <a
+                      href={p.pdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-lg transition-colors"
+                    >
+                      <ExternalLink size={18} />
+                      View Layout
+                    </a>
+                    <a
+                      href={p.pdf}
+                      download
+                      className="inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-white hover:bg-gray-50 text-primary text-sm font-semibold rounded-lg border-2 border-primary transition-colors"
+                    >
+                      <Download size={18} />
+                      Download
+                    </a>
+                  </div>
                 ) : (
                   <span className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-gray-100 text-gray-400 text-sm font-semibold rounded-md cursor-not-allowed">
                     PDF coming soon

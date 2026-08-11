@@ -54,7 +54,7 @@ export default function ServiceDirectory({ items: raw }: { items: unknown }) {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {items.map((item, idx) => (
           <article key={`${item.title}-${idx}`} className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex flex-col">
             <div className="flex items-start gap-3 mb-3">

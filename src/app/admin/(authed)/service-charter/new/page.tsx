@@ -11,7 +11,7 @@ export default async function NewServiceCharterPage() {
     <div className="space-y-6 max-w-3xl">
       <header>
         <h1 className="text-2xl font-display font-bold text-gray-900">Add service and charter</h1>
-        <p className="mt-1 text-sm text-gray-500">New charter document for <code className="font-mono">/about/service-charter</code>.</p>
+        <p className="mt-1 text-sm text-gray-500">New charter document for <code className="font-mono">/student-society/service-charter</code>.</p>
       </header>
       <ServiceCharterForm initial={null} />
     </div>

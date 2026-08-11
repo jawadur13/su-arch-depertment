@@ -18,7 +18,7 @@ export default async function ServiceCharterAdminPage() {
       <header>
         <h1 className="text-2xl font-display font-bold text-gray-900">Service and Charter</h1>
         <p className="mt-1 text-sm text-gray-500">
-          Service and charter documents for <code className="font-mono">/about/service-charter</code>. Drag to reorder.
+          Service and charter documents for <code className="font-mono">/student-society/service-charter</code>. Drag to reorder.
         </p>
       </header>
       <section className="space-y-3">
