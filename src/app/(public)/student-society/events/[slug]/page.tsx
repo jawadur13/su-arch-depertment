@@ -77,7 +77,12 @@ export default async function EventDetailPage({
   const catStyle = CATEGORY_STYLES[ev.category] ?? 'bg-gray-100 text-gray-700';
 
   return (
-    <PageShell title={ev.shortTitle} overline="Events" contentClassName="bg-gray-50 py-12 md:py-20">
+    <PageShell
+      title={ev.shortTitle}
+      overline="Events"
+      image={ev.imageUrl}
+      contentClassName="bg-gray-50 py-12 md:py-20"
+    >
       <Container>
         {/* Back link */}
         <Link

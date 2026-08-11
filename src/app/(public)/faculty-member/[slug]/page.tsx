@@ -62,6 +62,11 @@ const PLACEHOLDER = (
   <p className="text-gray-400 italic text-sm">Information will be updated soon.</p>
 );
 
+// Same hero used on the /faculty-member listing page — a sensible
+// shared fallback for the ~2/3 of faculty without their own photo,
+// rather than PageShell's generic default.
+const FALLBACK_HERO = 'https://res.cloudinary.com/ynfut7mx/image/upload/f_auto,q_auto:good/v1786254734/sonargaon-arch/about/ddznz330sr8n4k2tzjrt.png';
+
 function renderSection(value: SectionContent | null | undefined) {
   if (value == null) return PLACEHOLDER;
 
@@ -112,7 +117,12 @@ export default async function FacultyDetailPage({
     | null;
 
   return (
-    <PageShell title={member.name} overline="Faculty" contentClassName="bg-gray-50 py-12 md:py-20">
+    <PageShell
+      title={member.name}
+      overline="Faculty"
+      image={member.photoUrl ?? FALLBACK_HERO}
+      contentClassName="bg-gray-50 py-12 md:py-20"
+    >
       <Container>
         {/* Profile header card */}
         <div className="bg-white rounded-xl shadow-md border border-gray-100 mb-10 overflow-hidden max-w-5xl mx-auto">
