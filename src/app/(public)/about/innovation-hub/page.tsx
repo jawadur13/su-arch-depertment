@@ -2,15 +2,15 @@ import Image from 'next/image';
 import { ArrowRight, Network } from 'lucide-react';
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
-import { getAboutMechaClub } from '@/lib/identity';
+import { getAboutInnovationHub } from '@/lib/identity';
 import { sanitizeHtml } from '@/lib/sanitize-html';
 import { DynamicLucideIcon } from '@/components/ui/DynamicLucideIcon';
-import JoinMechaClubButton from './JoinMechaClubButton';
+import JoinInnovationHubButton from './JoinInnovationHubButton';
 
 export const metadata = {
-  title: 'Mecha Club — Department of Mechanical Engineering',
+  title: 'SU Innovation Hub — Department of Architecture',
   description:
-    'SU Mechanical Engineering Club (Mecha Club) — building industry-ready engineers through field visits, workshops, seminars, project showcases and an active alumni network.',
+    'SU Innovation Hub — fostering innovation, creativity, and collaborative problem-solving through workshops, seminars, design competitions, and practical learning experiences.',
 };
 
 // Phase 20 — activities[].iconName resolves via DynamicLucideIcon
@@ -53,11 +53,11 @@ function coerceActivities(v: unknown): ActivityRow[] {
     .filter((r) => r.title);
 }
 
-export default async function MechaClubPage() {
-  const row = await getAboutMechaClub();
+export default async function InnovationHubPage() {
+  const row = await getAboutInnovationHub();
   if (!row) {
     throw new Error(
-      'AboutMechaClub row missing (id="singleton"). Restore the required CMS data.',
+      'AboutInnovationHub row missing (id="singleton"). Restore the required CMS data.',
     );
   }
 
@@ -208,7 +208,7 @@ export default async function MechaClubPage() {
               {/* Primary CTA opens an in-app application form modal
                   instead of linking out — chair's request. Label still
                   comes from the DB so admin can rename via
-                  /admin/about-mecha-club; networkPrimaryCtaHref is
+                  /admin/about-innovation-hub; networkPrimaryCtaHref is
                   intentionally unused for this CTA now. */}
               <JoinMechaClubButton label={row.networkPrimaryCtaLabel} />
               {row.networkSecondaryCtaLabel && row.networkSecondaryCtaHref && (

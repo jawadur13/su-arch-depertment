@@ -24,7 +24,7 @@ const EMPTY: FormState = {
   motivation: '',
 };
 
-export default function JoinMechaClubButton({ label }: { label: string }) {
+export default function JoinInnovationHubButton({ label }: { label: string }) {
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -67,7 +67,7 @@ export default function JoinMechaClubButton({ label }: { label: string }) {
     if (pending) return;
     setPending(true);
     try {
-      const res = await fetch('/api/mecha-club/apply', {
+      const res = await fetch('/api/innovation-hub/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, [HONEYPOT_NAME]: honeypot }),
@@ -103,7 +103,7 @@ export default function JoinMechaClubButton({ label }: { label: string }) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-labelledby="mecha-club-join-title"
+          aria-labelledby="innovation-hub-join-title"
           className="fixed inset-0 z-[90] flex items-center justify-center p-4"
         >
           {/* Backdrop is decorative — chair wants close ONLY via the
@@ -115,13 +115,13 @@ export default function JoinMechaClubButton({ label }: { label: string }) {
             <div className="sticky top-0 bg-white border-b border-gray-100 px-7 md:px-8 py-5 flex items-start justify-between gap-3 z-[1]">
               <div>
                 <h2
-                  id="mecha-club-join-title"
+                  id="innovation-hub-join-title"
                   className="text-xl md:text-2xl font-display font-bold text-primary leading-tight"
                 >
-                  Join the Mecha Club
+                  Join SU Innovation Hub
                 </h2>
                 <p className="text-sm text-gray-500 mt-1">
-                  Fill in your details — the Mecha Club team will reach out shortly.
+                  Fill in your details — the Innovation Hub team will reach out shortly.
                 </p>
               </div>
               <button
@@ -144,7 +144,7 @@ export default function JoinMechaClubButton({ label }: { label: string }) {
                   Your application is in!
                 </h3>
                 <p className="text-sm text-gray-600 max-w-sm mx-auto">
-                  We&apos;ve received your submission. The Mecha Club team will get in
+                  We&apos;ve received your submission. The Innovation Hub team will get in
                   touch via email shortly.
                 </p>
                 <button
@@ -242,7 +242,7 @@ export default function JoinMechaClubButton({ label }: { label: string }) {
                     rows={4}
                     value={form.motivation}
                     onChange={(e) => update('motivation', e.target.value)}
-                    placeholder="A short paragraph on what excites you about the Mecha Club — projects, interests, what you'd like to contribute."
+                    placeholder="A short paragraph on what excites you about the Innovation Hub — projects, interests, what you'd like to contribute."
                     className={`${inputClass} resize-y`}
                     maxLength={2000}
                   />
@@ -253,9 +253,9 @@ export default function JoinMechaClubButton({ label }: { label: string }) {
                   aria-hidden="true"
                   className="absolute left-[-9999px] w-px h-px overflow-hidden opacity-0 pointer-events-none"
                 >
-                  <label htmlFor="mecha-club-website">Website</label>
+                  <label htmlFor="innovation-hub-website">Website</label>
                   <input
-                    id="mecha-club-website"
+                    id="innovation-hub-website"
                     type="text"
                     name={HONEYPOT_NAME}
                     tabIndex={-1}

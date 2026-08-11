@@ -32,7 +32,7 @@ function parseJsonArray(fd: FormData, key: string): unknown {
   }
 }
 
-export async function updateAboutMechaClubAction(
+export async function updateAboutInnovationHubAction(
   _prev: ActionResult | { ok: null },
   formData: FormData,
 ): Promise<ActionResult> {
@@ -97,8 +97,8 @@ export async function updateAboutMechaClubAction(
     return { ok: false, error: e instanceof Error ? e.message : 'Database error' };
   }
 
-  revalidatePath('/admin/about-mecha-club');
+  revalidatePath('/admin/about-innovation-hub');
   revalidatePath('/admin');
-  revalidatePath('/about/mecha-club');
+  revalidatePath('/about/innovation-hub');
   return { ok: true };
 }

@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
   // Dedicated namespace so the bucket is not shared with the
   // contact form or the newsletter signup.
-  const rateLimitKey = `mecha-club-apply:${ip ?? 'no-ip'}`;
+  const rateLimitKey = `innovation-hub-apply:${ip ?? 'no-ip'}`;
   const limit = checkRateLimit(rateLimitKey);
   if (!limit.allowed) {
     const retryAfter = Math.max(1, Math.ceil((limit.resetMs - Date.now()) / 1000));
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  revalidatePath('/admin/mecha-club-applications');
+  revalidatePath('/admin/innovation-hub-applications');
   revalidatePath('/admin');
 
   return NextResponse.json({ ok: true });

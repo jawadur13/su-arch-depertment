@@ -523,7 +523,7 @@ model AboutMissionVision {
   @@map("about_mission_vision")
 }
 
-model AboutMechaClub {
+model AboutInnovationHub {
   id                       String   @id @default("singleton")
   // Hero
   heroTitle                String
@@ -561,7 +561,7 @@ model AboutMechaClub {
   networkSecondaryCtaHref  String?
   updatedAt                DateTime @updatedAt
 
-  @@map("about_mecha_club")
+  @@map("about_innovation_hub")
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -1496,8 +1496,8 @@ model PageHero {
 
 // Mecha Club join applications — populated by the public popup form
 // on /about/mecha-club. Admin reviews + approves/rejects via
-// /admin/mecha-club-applications.
-model MechaClubApplication {
+// /admin/innovation-hub-applications.
+model InnovationHubApplication {
   id          String   @id @default(cuid())
   fullName    String
   studentId   String                     // SU ID (e.g. SU1603141114)
@@ -1517,7 +1517,7 @@ model MechaClubApplication {
 
   @@index([status, submittedAt])
   @@index([submittedAt])
-  @@map("mecha_club_application")
+  @@map("innovation_hub_application")
 }
 
 model NewsletterSubscriber {

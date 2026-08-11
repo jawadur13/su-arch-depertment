@@ -81,7 +81,7 @@ const PRIMARY_NAV: NavItem[] = [
 const ABOUT_PAGES_NAV: NavItem[] = [
   { href: '/admin/about-overview',        label: 'Overview',         icon: Info },
   { href: '/admin/about-mission-vision',  label: 'Mission & Vision', icon: Info },
-  { href: '/admin/about-mecha-club',      label: 'Mecha Club',       icon: Info },
+  { href: '/admin/about-innovation-hub',      label: 'SU Innovation Hub',       icon: Info },
   { href: '/admin/department-layout',     label: 'Department Layout',   icon: FileText },
   { href: '/admin/service-charter',       label: 'Service and Charter', icon: FileText },
 ];
@@ -512,11 +512,11 @@ export default function Sidebar({
         {/* Mecha Club join applications — operational inbox, mirrors
             the Contact Submissions placement (no badge wired yet). */}
         <Link
-          href="/admin/mecha-club-applications"
-          className={linkClass(!!pathname?.startsWith('/admin/mecha-club-applications'))}
+          href="/admin/innovation-hub-applications"
+          className={linkClass(!!pathname?.startsWith('/admin/innovation-hub-applications'))}
         >
           <Wrench size={16} />
-          Mecha Club Applications
+          Innovation Hub Applications
         </Link>
 
         {/* Newsletter — page CMS + subscriber list. Grouped together so

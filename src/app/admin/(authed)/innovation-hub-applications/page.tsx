@@ -5,7 +5,7 @@ import ApplicationsList from './ApplicationsList';
 
 export const metadata = { title: 'Mecha Club — Applications' };
 
-export default async function MechaClubApplicationsPage() {
+export default async function InnovationHubApplicationsPage() {
   const session = await getSession();
   if (!session?.user) redirect('/admin/login');
 
@@ -23,7 +23,7 @@ export default async function MechaClubApplicationsPage() {
         </h1>
         <p className="mt-1 text-sm text-gray-500">
           Join applications submitted via the public{' '}
-          <code className="font-mono">/about/mecha-club</code> popup form.{' '}
+          <code className="font-mono">/about/innovation-hub</code> popup form.{' '}
           {applications.length} total
           {pendingCount > 0 ? ` · ${pendingCount} pending review` : ''}.
         </p>

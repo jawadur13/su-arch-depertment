@@ -15,11 +15,11 @@ async function requireAuth(): Promise<ActionResult | null> {
 }
 
 function revalidateSurfaces() {
-  revalidatePath('/admin/mecha-club-applications');
+  revalidatePath('/admin/innovation-hub-applications');
   revalidatePath('/admin');
 }
 
-export async function updateMechaClubApplicationStatusAction(
+export async function updateInnovationHubApplicationStatusAction(
   id: string,
   rawStatus: string,
 ): Promise<ActionResult> {
@@ -53,7 +53,7 @@ export async function updateMechaClubApplicationStatusAction(
   return { ok: true };
 }
 
-export async function deleteMechaClubApplicationAction(
+export async function deleteInnovationHubApplicationAction(
   id: string,
 ): Promise<ActionResult> {
   const denied = await requireAuth();

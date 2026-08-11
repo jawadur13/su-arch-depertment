@@ -40,7 +40,7 @@ const staticPages: SearchItem[] = [
   { title: 'Mission & Vision', type: 'Page', href: '/about/mission-vision', description: "Department's mission and long-term vision" },
   { title: 'Laboratory Facility', type: 'Page', href: '/about/laboratory-facility', description: 'Departmental labs and equipment' },
   { title: 'Lab Facility', type: 'Page', href: '/about/lab-facility', description: 'List of all departmental labs' },
-  { title: 'Mecha Club', type: 'Page', href: '/about/mecha-club', description: 'Sonargaon University Mecha Club (SUMEC)' },
+  { title: 'SU Innovation Hub', type: 'Page', href: '/about/innovation-hub', description: 'Sonargaon University Mecha Club (SU Innovation Hub)' },
   { title: 'Department Layout', type: 'Page', href: '/about/department-layout', description: 'Department layout documents' },
   { title: 'Service and Charter', type: 'Page', href: '/about/service-charter', description: 'Service and charter documents' },
 
