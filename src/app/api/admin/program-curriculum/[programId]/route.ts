@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
-import { programCurriculumUpdateSchema } from '@/lib/validation';
+import { programCurriculumCreateSchema } from '@/lib/validation';
 
 type RouteContext = { params: Promise<{ programId: string }> };
 
@@ -19,7 +19,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   const { programId } = await context.params;
   const body = await readJson(request);
   const bodyObj = (typeof body === 'object' && body !== null) ? body as Record<string, unknown> : {};
-  const parsed = programCurriculumUpdateSchema.parse({ ...bodyObj, programId });
+  const parsed = programCurriculumCreateSchema.parse({ ...bodyObj, programId });
 
   const program = await prisma.program.findUnique({ where: { id: programId }, select: { id: true } });
   if (!program) throw new ApiError(404, 'Program not found');

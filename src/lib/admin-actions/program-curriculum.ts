@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db';
 import { getSession } from '@/lib/auth-server';
-import { programCurriculumUpdateSchema } from '@/lib/validation';
+import { programCurriculumCreateSchema } from '@/lib/validation';
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -70,7 +70,7 @@ export async function upsertProgramCurriculumAction(
     displayOrder:    Number(getStr(formData, 'displayOrder')) || 0,
   };
 
-  const parsed = programCurriculumUpdateSchema.safeParse(raw);
+  const parsed = programCurriculumCreateSchema.safeParse(raw);
   if (!parsed.success) {
     return { ok: false, error: parsed.error.issues.map((i) => `${i.path.join('.') || '(root)'}: ${i.message}`).join('; ') };
   }

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
-import { programFeeStructureUpdateSchema } from '@/lib/validation';
+import { programFeeStructureCreateSchema } from '@/lib/validation';
 
 type RouteContext = { params: Promise<{ programId: string }> };
 
@@ -20,7 +20,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   const body = await readJson(request);
   // Allow client to omit programId in body — URL is canonical.
   const bodyObj = (typeof body === 'object' && body !== null) ? body as Record<string, unknown> : {};
-  const parsed = programFeeStructureUpdateSchema.parse({ ...bodyObj, programId });
+  const parsed = programFeeStructureCreateSchema.parse({ ...bodyObj, programId });
 
   const program = await prisma.program.findUnique({ where: { id: programId }, select: { id: true } });
   if (!program) throw new ApiError(404, 'Program not found');
