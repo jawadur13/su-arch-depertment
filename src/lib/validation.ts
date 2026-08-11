@@ -565,7 +565,7 @@ export const newsCreateSchema = z.object({
   meta:          keyValueArraySchema,
 });
 
-export const newsUpdateSchema = newsCreateSchema;
+export const newsUpdateSchema = newsCreateSchema.partial();
 
 // ─── Event ──────────────────────────────────────────────────────
 
@@ -609,7 +609,7 @@ export const eventCreateSchema = z.object({
   ctaExternal:   z.boolean().default(false),
 });
 
-export const eventUpdateSchema = eventCreateSchema;
+export const eventUpdateSchema = eventCreateSchema.partial();
 
 // ─── Notice ─────────────────────────────────────────────────────
 
@@ -634,7 +634,7 @@ export const noticeCreateSchema = z.object({
   fileName:     optionalNullableString,
 });
 
-export const noticeUpdateSchema = noticeCreateSchema;
+export const noticeUpdateSchema = noticeCreateSchema.partial();
 
 // ─── GalleryImage ───────────────────────────────────────────────
 
@@ -668,7 +668,7 @@ export const alumniCreateSchema = z.object({
   photoPublicId: optionalNullableString,
 });
 
-export const alumniUpdateSchema = alumniCreateSchema;
+export const alumniUpdateSchema = alumniCreateSchema.partial();
 
 // ─── Club ───────────────────────────────────────────────────────
 
@@ -681,7 +681,7 @@ export const clubCreateSchema = z.object({
   imagePublicId: optionalNullableString,
 });
 
-export const clubUpdateSchema = clubCreateSchema;
+export const clubUpdateSchema = clubCreateSchema.partial();
 
 // ─── FAQ ────────────────────────────────────────────────────────
 
@@ -699,7 +699,7 @@ export const faqCreateSchema = z.object({
   answer:   z.string().min(1),
 });
 
-export const faqUpdateSchema = faqCreateSchema;
+export const faqUpdateSchema = faqCreateSchema.partial();
 
 // ─── Visitor ────────────────────────────────────────────────────
 
@@ -713,7 +713,7 @@ export const visitorCreateSchema = z.object({
   quote:         paragraphsArraySchema,
 });
 
-export const visitorUpdateSchema = visitorCreateSchema;
+export const visitorUpdateSchema = visitorCreateSchema.partial();
 
 // ─── ResearchPaper ──────────────────────────────────────────────
 
@@ -725,7 +725,7 @@ export const researchPaperCreateSchema = z.object({
   publicationYear: z.number().int().min(1900).max(2100).nullable().optional(),
 });
 
-export const researchPaperUpdateSchema = researchPaperCreateSchema;
+export const researchPaperUpdateSchema = researchPaperCreateSchema.partial();
 
 // ─── BusRoute ───────────────────────────────────────────────────
 
@@ -740,7 +740,7 @@ export const busRouteCreateSchema = z.object({
   returnTimes:    timeStringsArraySchema,
 });
 
-export const busRouteUpdateSchema = busRouteCreateSchema;
+export const busRouteUpdateSchema = busRouteCreateSchema.partial();
 
 // ─── Syllabus ───────────────────────────────────────────────────
 
@@ -760,7 +760,7 @@ export const syllabusCreateSchema = z.object({
   summary:       z.string().min(1),
 });
 
-export const syllabusUpdateSchema = syllabusCreateSchema;
+export const syllabusUpdateSchema = syllabusCreateSchema.partial();
 
 // ─── TransportLanding (singleton) ───────────────────────────────
 
@@ -815,7 +815,7 @@ export const admissionNoticeCreateSchema = z.object({
   isActive:             z.boolean().default(true),
 });
 
-export const admissionNoticeUpdateSchema = admissionNoticeCreateSchema;
+export const admissionNoticeUpdateSchema = admissionNoticeCreateSchema.partial();
 
 // ─── ProspectusEntry ────────────────────────────────────────────
 //
@@ -838,7 +838,7 @@ export const prospectusEntryCreateSchema = z.object({
   pdfFileName:   optionalNullableString,
 });
 
-export const prospectusEntryUpdateSchema = prospectusEntryCreateSchema;
+export const prospectusEntryUpdateSchema = prospectusEntryCreateSchema.partial();
 
 // ─── DepartmentLayout + ServiceCharter ──────────────────────────
 //
@@ -857,7 +857,7 @@ export const departmentLayoutCreateSchema = z.object({
   pdfFileName:   optionalNullableString,
 });
 
-export const departmentLayoutUpdateSchema = departmentLayoutCreateSchema;
+export const departmentLayoutUpdateSchema = departmentLayoutCreateSchema.partial();
 
 const serviceCharterStepSchema = z.object({
   text:      z.string().min(1).max(500),
@@ -889,7 +889,7 @@ export const serviceCharterCreateSchema = z.object({
   serviceItems:  z.array(serviceCharterItemSchema).default([]),
 });
 
-export const serviceCharterUpdateSchema = serviceCharterCreateSchema;
+export const serviceCharterUpdateSchema = serviceCharterCreateSchema.partial();
 
 // ─────────────────────────────────────────────────────────────────
 //  Phase 8b — Admission CMS Part 2 (Requirements + Tuition Fees)
@@ -959,7 +959,7 @@ export const programFeeStructureCreateSchema = z.object({
   policies:      z.array(feePolicySchema).default([]),
 });
 
-export const programFeeStructureUpdateSchema = programFeeStructureCreateSchema;
+export const programFeeStructureUpdateSchema = programFeeStructureCreateSchema.partial();
 
 // ─── ProgramCurriculum (1:1 with Program) ──────────────────────
 //
@@ -1009,7 +1009,7 @@ export const programCurriculumCreateSchema = z.object({
   displayOrder:    z.number().int().default(0),
 });
 
-export const programCurriculumUpdateSchema = programCurriculumCreateSchema;
+export const programCurriculumUpdateSchema = programCurriculumCreateSchema.partial();
 
 // ─────────────────────────────────────────────────────────────────
 //  Phase 8c — Admission CMS Part 3 (Transfer Credits + Waiver/Scholarship)
@@ -1088,7 +1088,7 @@ export const waiverCategoryCreateSchema = z.object({
   note:     optionalNullableString,
 });
 
-export const waiverCategoryUpdateSchema = waiverCategoryCreateSchema;
+export const waiverCategoryUpdateSchema = waiverCategoryCreateSchema.partial();
 
 // ─── Scholarship (multi-row) ──────────────────────────────────
 export const scholarshipCreateSchema = z.object({
@@ -1101,7 +1101,7 @@ export const scholarshipCreateSchema = z.object({
   isHighlight: z.boolean().default(false),
 });
 
-export const scholarshipUpdateSchema = scholarshipCreateSchema;
+export const scholarshipUpdateSchema = scholarshipCreateSchema.partial();
 
 // ─────────────────────────────────────────────────────────────────
 //  Phase 9 — ContactSubmission (public submit + admin status update)
@@ -1265,7 +1265,7 @@ export const campusLocationCreateSchema = z.object({
   mapsUrl: optionalNullableString,
 });
 
-export const campusLocationUpdateSchema = campusLocationCreateSchema;
+export const campusLocationUpdateSchema = campusLocationCreateSchema.partial();
 
 // ─────────────────────────────────────────────────────────────────
 //  Phase 12 — JourneyCTAContent singleton (chrome section between
