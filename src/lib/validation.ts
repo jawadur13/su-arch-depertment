@@ -447,31 +447,6 @@ export const laboratoryLabCreateSchema = z.object({
 
 export const laboratoryLabUpdateSchema = laboratoryLabCreateSchema.partial();
 
-export const aboutMechaClubUpdateSchema = z.object({
-  heroTitle:                z.string().min(1).max(300),
-  heroOverline:             optionalNullableString,
-  heroImageUrl:             z.string().min(1),
-  heroImagePublicId:        optionalNullableString,
-  heroImageVerticalPercent: z.coerce.number().int().min(0).max(100).default(50),
-  introOverline:            optionalNullableString,
-  introHeading:             z.string().min(1),
-  introBody1:               z.string().min(1),
-  introBody2:               z.string().min(1),
-  introImageUrl:            z.string().min(1),
-  introImagePublicId:       optionalNullableString,
-  stats:                    statsArraySchema,
-  activitiesOverline:       optionalNullableString,
-  activitiesHeading:        z.string().min(1),
-  activities:               activitiesArraySchema,
-  networkOverline:          optionalNullableString,
-  networkHeading:           z.string().min(1),
-  networkBody:              z.string().min(1),
-  networkPrimaryCtaLabel:   z.string().min(1),
-  networkPrimaryCtaHref:    z.string().min(1),
-  networkSecondaryCtaLabel: optionalNullableString,
-  networkSecondaryCtaHref:  optionalNullableString,
-});
-
 export const aboutInnovationHubUpdateSchema = z.object({
   heroTitle:                z.string().min(1).max(300),
   heroOverline:             optionalNullableString,
