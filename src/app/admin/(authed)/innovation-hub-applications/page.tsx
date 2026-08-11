@@ -3,13 +3,13 @@ import { prisma } from '@/lib/db';
 import { getSession } from '@/lib/auth-server';
 import ApplicationsList from './ApplicationsList';
 
-export const metadata = { title: 'Mecha Club — Applications' };
+export const metadata = { title: 'SU Innovation Hub — Applications' };
 
 export default async function InnovationHubApplicationsPage() {
   const session = await getSession();
   if (!session?.user) redirect('/admin/login');
 
-  const applications = await prisma.mechaClubApplication.findMany({
+  const applications = await prisma.innovationHubApplication.findMany({
     orderBy: { submittedAt: 'desc' },
   });
 
@@ -19,7 +19,7 @@ export default async function InnovationHubApplicationsPage() {
     <div className="space-y-6 max-w-5xl">
       <header>
         <h1 className="text-2xl font-display font-bold text-gray-900">
-          Mecha Club — Applications
+          SU Innovation Hub — Applications
         </h1>
         <p className="mt-1 text-sm text-gray-500">
           Join applications submitted via the public{' '}

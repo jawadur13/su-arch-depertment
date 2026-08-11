@@ -1,11 +1,11 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/db';
-import { mechaClubApplicationCreateSchema } from '@/lib/validation';
+import { innovationHubApplicationCreateSchema } from '@/lib/validation';
 import { checkRateLimit } from '@/lib/rate-limit';
 
 // Honeypot field name — must match the hidden input in
-// JoinMechaClubModal. Real users never fill it; bots fill all inputs.
+// JoinInnovationHubButton. Real users never fill it; bots fill all inputs.
 const HONEYPOT_FIELD = 'website';
 
 function getClientIp(request: NextRequest): string | null {
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const parsed = mechaClubApplicationCreateSchema.safeParse(body);
+  const parsed = innovationHubApplicationCreateSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
       {
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    await prisma.mechaClubApplication.create({
+    await prisma.innovationHubApplication.create({
       data: {
         ...parsed.data,
         // Normalize email so duplicates only differ by case still group.

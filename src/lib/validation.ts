@@ -1217,6 +1217,27 @@ export const mechaClubApplicationStatusUpdateSchema = z.object({
   status: mechaClubApplicationStatusEnum,
 });
 
+const innovationHubSemesterEnum = z.enum(['1', '2', '3', '4', '5', '6', '7', '8']);
+
+export const innovationHubApplicationCreateSchema = z.object({
+  fullName:   z.string().trim().min(1).max(200),
+  studentId:  z.string().trim().min(1).max(50),
+  email:      z.string().trim().email().max(320),
+  phone:      z.string().trim().min(1).max(50),
+  semester:   innovationHubSemesterEnum,
+  motivation: z.string().trim().min(1).max(2000),
+});
+
+export const innovationHubApplicationStatusEnum = z.enum([
+  'pending',
+  'approved',
+  'rejected',
+]);
+
+export const innovationHubApplicationStatusUpdateSchema = z.object({
+  status: innovationHubApplicationStatusEnum,
+});
+
 // Generic page-hero update. pageKey + publicPath + pageLabel are
 // stable identifiers seeded by migration — they are NOT in the
 // editable surface, so the admin form passes only the hero fields.

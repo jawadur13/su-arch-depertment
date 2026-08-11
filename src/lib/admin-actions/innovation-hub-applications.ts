@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db';
 import { getSession } from '@/lib/auth-server';
-import { mechaClubApplicationStatusUpdateSchema } from '@/lib/validation';
+import { innovationHubApplicationStatusUpdateSchema } from '@/lib/validation';
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -26,7 +26,7 @@ export async function updateInnovationHubApplicationStatusAction(
   const denied = await requireAuth();
   if (denied) return denied;
 
-  const parsed = mechaClubApplicationStatusUpdateSchema.safeParse({ status: rawStatus });
+  const parsed = innovationHubApplicationStatusUpdateSchema.safeParse({ status: rawStatus });
   if (!parsed.success) {
     return {
       ok: false,
@@ -35,7 +35,7 @@ export async function updateInnovationHubApplicationStatusAction(
   }
 
   try {
-    await prisma.mechaClubApplication.update({
+    await prisma.innovationHubApplication.update({
       where: { id },
       data: { status: parsed.data.status },
     });
@@ -60,7 +60,7 @@ export async function deleteInnovationHubApplicationAction(
   if (denied) return denied;
 
   try {
-    await prisma.mechaClubApplication.delete({ where: { id } });
+    await prisma.innovationHubApplication.delete({ where: { id } });
   } catch (e: unknown) {
     if (
       e instanceof Prisma.PrismaClientKnownRequestError &&
