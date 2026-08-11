@@ -53,12 +53,8 @@ export default async function MissionVisionPage() {
                   </h2>
                   <div className="mt-3 mb-6 h-1 w-16 bg-button-yellow rounded-full" />
 
-                  <div className="space-y-4">
-                    {row.missionBody.split('\n\n').map((para, i) => (
-                      <p key={i} className="text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify">
-                        {para}
-                      </p>
-                    ))}
+                  <div className="whitespace-pre-line text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify">
+                    {row.missionBody}
                   </div>
                 </div>
               </div>
@@ -85,12 +81,8 @@ export default async function MissionVisionPage() {
                   </h2>
                   <div className="mt-3 mb-6 h-1 w-16 bg-button-yellow rounded-full lg:ml-auto" />
 
-                  <div className="space-y-4">
-                    {row.visionBody.split('\n\n').map((para, i) => (
-                      <p key={i} className="text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify">
-                        {para}
-                      </p>
-                    ))}
+                  <div className="whitespace-pre-line text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify">
+                    {row.visionBody}
                   </div>
                 </div>
 
