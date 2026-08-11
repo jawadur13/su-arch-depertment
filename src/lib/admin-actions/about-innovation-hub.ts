@@ -5,7 +5,7 @@ import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db';
 import { getSession } from '@/lib/auth-server';
 import { sanitizeHtml } from '@/lib/sanitize-html';
-import { aboutMechaClubUpdateSchema } from '@/lib/validation';
+import { aboutInnovationHubUpdateSchema } from '@/lib/validation';
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -64,7 +64,7 @@ export async function updateAboutInnovationHubAction(
     networkSecondaryCtaHref:  emptyToNull(formData.get('networkSecondaryCtaHref')),
   };
 
-  const parsed = aboutMechaClubUpdateSchema.safeParse(raw);
+  const parsed = aboutInnovationHubUpdateSchema.safeParse(raw);
   if (!parsed.success) {
     return {
       ok: false,
@@ -88,7 +88,7 @@ export async function updateAboutInnovationHubAction(
   };
 
   try {
-    await prisma.aboutMechaClub.upsert({
+    await prisma.aboutInnovationHub.upsert({
       where: { id: 'singleton' },
       create: { id: 'singleton', ...data },
       update: data,

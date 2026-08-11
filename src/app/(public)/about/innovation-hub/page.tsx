@@ -210,7 +210,7 @@ export default async function InnovationHubPage() {
                   comes from the DB so admin can rename via
                   /admin/about-innovation-hub; networkPrimaryCtaHref is
                   intentionally unused for this CTA now. */}
-              <JoinMechaClubButton label={row.networkPrimaryCtaLabel} />
+              <JoinInnovationHubButton label={row.networkPrimaryCtaLabel} />
               {row.networkSecondaryCtaLabel && row.networkSecondaryCtaHref && (
                 <a
                   href={row.networkSecondaryCtaHref}
