@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
 import { alumniUpdateSchema } from '@/lib/validation';
 
@@ -19,7 +19,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   const body = await readJson(request);
   const data = alumniUpdateSchema.parse(body);
   try {
-    const alumni = await prisma.alumni.update({ where: { id }, data });
+    const alumni = await prisma.alumni.update({ where: { id }, data: stripNulls(data) });
     return NextResponse.json({ alumni });
   } catch (e: unknown) {
     if ((e as { code?: string })?.code === 'P2025') throw new ApiError(404, 'Alumni not found');

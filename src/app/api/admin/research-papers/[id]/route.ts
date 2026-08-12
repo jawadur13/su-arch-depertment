@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
 import { researchPaperUpdateSchema } from '@/lib/validation';
 
@@ -19,7 +19,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   const body = await readJson(request);
   const data = researchPaperUpdateSchema.parse(body);
   try {
-    const paper = await prisma.researchPaper.update({ where: { id }, data });
+    const paper = await prisma.researchPaper.update({ where: { id }, data: stripNulls(data) });
     return NextResponse.json({ paper });
   } catch (e: unknown) {
     if ((e as { code?: string })?.code === 'P2025') throw new ApiError(404, 'Research paper not found');

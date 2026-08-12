@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { Prisma } from '@prisma/client';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
 import { waiverCategoryUpdateSchema } from '@/lib/validation';
 
@@ -23,7 +23,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
     const item = await prisma.waiverCategory.update({
       where: { id },
       data: {
-        ...parsed,
+        ...stripNulls(parsed),
         items: parsed.items as unknown as Prisma.InputJsonValue,
       },
     });

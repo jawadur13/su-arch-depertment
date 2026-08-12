@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { Prisma } from '@prisma/client';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
 import { visitorUpdateSchema } from '@/lib/validation';
 
@@ -22,7 +22,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   try {
     const visitor = await prisma.visitor.update({
       where: { id },
-      data: { ...parsed, quote: parsed.quote as Prisma.InputJsonValue },
+      data: { ...stripNulls(parsed), quote: parsed.quote as Prisma.InputJsonValue },
     });
     return NextResponse.json({ visitor });
   } catch (e: unknown) {

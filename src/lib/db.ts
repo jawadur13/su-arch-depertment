@@ -66,6 +66,12 @@ const globalForPrisma = globalThis as unknown as {
 export const prisma: ExtendedPrismaClient =
   globalForPrisma.prisma ?? basePrismaClient();
 
+export function stripNulls<T extends Record<string, unknown>>(obj: T): Partial<T> {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([_, v]) => v !== null),
+  ) as Partial<T>;
+}
+
 if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.prisma = prisma;
 }

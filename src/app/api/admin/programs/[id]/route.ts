@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import {
   requireUser,
   withErrorHandling,
@@ -30,7 +30,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   try {
     const program = await prisma.program.update({
       where: { id },
-      data,
+      data: stripNulls(data),
     });
     return NextResponse.json({ program });
   } catch (e: unknown) {

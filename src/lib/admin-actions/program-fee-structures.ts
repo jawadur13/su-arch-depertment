@@ -73,9 +73,9 @@ export async function upsertProgramFeeStructureAction(
   }));
   const data = {
     programId,
-    introOverline: parsed.data.introOverline,
-    introHeading:  parsed.data.introHeading,
-    introBody:     parsed.data.introBody,
+    introOverline: parsed.data.introOverline!,
+    introHeading:  parsed.data.introHeading!,
+    introBody:     parsed.data.introBody!,
     overviewStats: parsed.data.overviewStats as unknown as Prisma.InputJsonValue,
     shifts:        parsed.data.shifts        as unknown as Prisma.InputJsonValue,
     policies:      cleanPolicies             as unknown as Prisma.InputJsonValue,

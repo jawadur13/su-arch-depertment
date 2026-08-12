@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { Prisma } from '@prisma/client';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
 import { admissionNoticeUpdateSchema } from '@/lib/validation';
 
@@ -23,7 +23,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
     const item = await prisma.admissionNotice.update({
       where: { id },
       data: {
-        ...data,
+        ...stripNulls(data),
         bodyParagraphs: data.bodyParagraphs as Prisma.InputJsonValue,
         ccList:         data.ccList         as Prisma.InputJsonValue,
       },

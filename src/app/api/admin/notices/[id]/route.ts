@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
 import { noticeUpdateSchema } from '@/lib/validation';
 
@@ -19,7 +19,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   const body = await readJson(request);
   const parsed = noticeUpdateSchema.parse(body);
   try {
-    const notice = await prisma.notice.update({ where: { id }, data: parsed });
+    const notice = await prisma.notice.update({ where: { id }, data: stripNulls(parsed) });
     return NextResponse.json({ notice });
   } catch (e: unknown) {
     if ((e as { code?: string })?.code === 'P2025') throw new ApiError(404, 'Notice not found');

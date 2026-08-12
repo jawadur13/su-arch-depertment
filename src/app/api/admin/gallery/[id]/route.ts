@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
+import { prisma, stripNulls } from '@/lib/db';
 import { requireUser, withErrorHandling, readJson, ApiError } from '@/lib/auth-server';
 import { galleryImageUpdateSchema } from '@/lib/validation';
 
@@ -19,7 +19,7 @@ export const PUT = withErrorHandling(async (request, context: RouteContext) => {
   const body = await readJson(request);
   const data = galleryImageUpdateSchema.parse(body);
   try {
-    const image = await prisma.galleryImage.update({ where: { id }, data });
+    const image = await prisma.galleryImage.update({ where: { id }, data: stripNulls(data) });
     return NextResponse.json({ image });
   } catch (e: unknown) {
     if ((e as { code?: string })?.code === 'P2025') throw new ApiError(404, 'Gallery image not found');
