@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Home, Search, ArrowLeft, Cog } from 'lucide-react';
+import { Home, Search, ArrowLeft, DraftingCompass } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import { getDepartmentIdentity } from '@/lib/identity';
 
 export const metadata = {
   title: 'Page Not Found',
@@ -17,18 +18,20 @@ const quickLinks = [
   { name: 'Contact', href: '/contact' },
 ];
 
-export default function NotFound() {
+export default async function NotFound() {
+  const dept = await getDepartmentIdentity();
+
   return (
     <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden pt-[180px] md:pt-[200px] pb-20 bg-gray-50">
       {/* Decorative background blobs */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -right-32 w-[28rem] h-[28rem] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-      <Cog
+      <DraftingCompass
         className="absolute top-[12%] right-[8%] text-primary/[0.04] rotate-12 pointer-events-none hidden md:block"
         size={220}
         strokeWidth={1}
       />
-      <Cog
+      <DraftingCompass
         className="absolute bottom-[10%] left-[6%] text-accent/[0.05] -rotate-12 pointer-events-none hidden md:block"
         size={160}
         strokeWidth={1}
@@ -51,12 +54,13 @@ export default function NotFound() {
           </span>
 
           <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-4">
-            Looks like this page went missing.
+            Looks like this blueprint is missing.
           </h2>
 
           <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10">
-            The page you were looking for doesn&apos;t exist or may have moved.
-            Try one of the links below, or head back to the homepage.
+            The page you were looking for doesn&apos;t exist on the {dept.name}{' '}
+            website — it may have moved, or was never built. Try one of the
+            links below, or head back to the homepage.
           </p>
 
           {/* Primary actions */}
