@@ -41,3 +41,23 @@ export function ListItem({ text }: { text: string }) {
     </li>
   );
 }
+
+// Same "text + link on its own line below" look as LinkifiedText, but for
+// callers that already have a dedicated link field instead of an embedded URL.
+export function TextWithLink({ text, link }: { text: string; link?: string | null }) {
+  return (
+    <>
+      {text}
+      {link && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1 block text-accent underline break-all hover:text-accent/80 transition-colors"
+        >
+          {link}
+        </a>
+      )}
+    </>
+  );
+}

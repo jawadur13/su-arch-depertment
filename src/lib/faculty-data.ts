@@ -1,15 +1,20 @@
 export type FacultyType = 'leadership' | 'full-time' | 'part-time';
 
+/** A single publication citation, with an optional source link. */
+export type PublicationEntry = { text: string; link?: string | null };
+
 /**
  * Flexible section content. A section can be:
  *  - a plain paragraph (string)
  *  - a simple bullet list (string[])
  *  - grouped lists with subheadings ({ heading, items }[])
+ *  - publications with an optional link ({ text, link }[])
  */
 export type SectionContent =
   | string
   | string[]
-  | { heading: string; items: string[] }[];
+  | { heading: string; items: string[] }[]
+  | PublicationEntry[];
 
 export interface Faculty {
   slug: string;

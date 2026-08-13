@@ -191,6 +191,17 @@ const sectionContentSchema = z.union([
   ),
 ]);
 
+// Publications — same generic SectionContent shapes, plus a structured
+// { text, link } shape so each citation can carry its own optional URL.
+const publicationEntrySchema = z.object({
+  text: z.string().min(1),
+  link: z.string().url().or(z.literal('')).nullable().optional(),
+});
+const publicationsSchema = z.union([
+  sectionContentSchema,
+  z.array(publicationEntrySchema),
+]);
+
 // PersonalInfo — array of label/value rows
 const personalInfoSchema = z.array(
   z.object({ label: z.string().min(1), value: z.string().min(1) }),
@@ -221,7 +232,7 @@ export const facultyCreateSchema = z.object({
   academicQualification: sectionContentSchema.nullable().optional(),
   trainingExperience:    sectionContentSchema.nullable().optional(),
   teachingArea:          sectionContentSchema.nullable().optional(),
-  publications:          sectionContentSchema.nullable().optional(),
+  publications:          publicationsSchema.nullable().optional(),
   research:              sectionContentSchema.nullable().optional(),
   awards:                sectionContentSchema.nullable().optional(),
   membership:            sectionContentSchema.nullable().optional(),

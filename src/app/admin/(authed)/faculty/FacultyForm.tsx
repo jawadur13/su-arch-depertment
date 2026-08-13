@@ -8,6 +8,7 @@ import ImageUploader from '@/components/admin/ImageUploader';
 import HeroImagePositionSlider from '@/components/admin/HeroImagePositionSlider';
 import PersonalInfoEditor from './PersonalInfoEditor';
 import SectionContentEditor from './SectionContentEditor';
+import PublicationEditor from './PublicationEditor';
 import ParagraphsEditor from '@/components/admin/ParagraphsEditor';
 import DesignationSelector from './DesignationSelector';
 import {
@@ -27,11 +28,13 @@ type Props = {
   currentHead: CurrentRoleHolder;
 };
 
-const SECTION_FIELDS = [
+const SECTION_FIELDS_BEFORE_PUBLICATIONS = [
   { name: 'academicQualification', label: 'Academic Qualification' },
   { name: 'trainingExperience',    label: 'Training Experience' },
   { name: 'teachingArea',          label: 'Teaching Area' },
-  { name: 'publications',          label: 'Publication' },
+] as const;
+
+const SECTION_FIELDS_AFTER_PUBLICATIONS = [
   { name: 'research',              label: 'Research' },
   { name: 'awards',                label: 'Award & Scholarship' },
   { name: 'membership',            label: 'Membership' },
@@ -186,7 +189,20 @@ export default function FacultyForm({ initial, currentDean, currentHead }: Props
 
       <Card title="Detail Sections">
         <div className="space-y-4">
-          {SECTION_FIELDS.map((f) => (
+          {SECTION_FIELDS_BEFORE_PUBLICATIONS.map((f) => (
+            <SectionContentEditor
+              key={f.name}
+              name={f.name}
+              label={f.label}
+              initialValue={initial?.[f.name as keyof Faculty] as unknown}
+            />
+          ))}
+          <PublicationEditor
+            name="publications"
+            label="Publication"
+            initialValue={initial?.publications as unknown}
+          />
+          {SECTION_FIELDS_AFTER_PUBLICATIONS.map((f) => (
             <SectionContentEditor
               key={f.name}
               name={f.name}

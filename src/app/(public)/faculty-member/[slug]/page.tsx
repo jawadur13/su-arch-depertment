@@ -11,9 +11,10 @@ import {
   getUniversityIdentity,
   getPageHero,
 } from '@/lib/identity';
-import { type SectionContent } from '@/lib/faculty-data';
+import { type SectionContent, type PublicationEntry } from '@/lib/faculty-data';
 import { ListItem } from '@/components/ui/LinkifiedText';
 import ExpandableList from './ExpandableList';
+import PublicationList from './PublicationList';
 
 // Pre-render every current slug at build time; Next.js defaults to
 // dynamicParams=true so admin-added slugs after deploy render
@@ -75,6 +76,10 @@ function renderSection(value: SectionContent | null | undefined) {
 
   if (typeof value[0] === 'string') {
     return <ExpandableList items={value as string[]} />;
+  }
+
+  if (typeof value[0] === 'object' && value[0] !== null && 'text' in value[0]) {
+    return <PublicationList items={value as PublicationEntry[]} />;
   }
 
   return (
