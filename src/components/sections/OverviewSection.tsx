@@ -50,7 +50,7 @@ Design studios form the core of the programme, supported by a 1:10 teacher-stude
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="order-1 lg:order-2 overflow-hidden"
+            className="order-1 lg:order-2 overflow-hidden rounded-2xl"
           >
             <Image
               src="https://res.cloudinary.com/ynfut7mx/image/upload/f_auto,q_auto:good/v1786350096/sonargaon-arch/gallery/z8xeifkxt2tr6riopuir.webp"
