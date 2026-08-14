@@ -1548,3 +1548,35 @@ model NewsletterSubscriber {
   @@index([status, createdAt])
   @@map("newsletter_subscriber")
 }
+
+// Homepage lead-capture popup — fires client-side after `delaySeconds`
+// on the homepage. Singleton settings row (admin-editable copy + on/off
+// + delay) plus a flat capture list, same split as
+// NewsLanding/NewsletterSubscriber above.
+model AdmissionPopupSettings {
+  id           String   @id @default("singleton")
+  enabled      Boolean  @default(true)
+  delaySeconds Int      @default(15)
+  heading      String   @default("Start your journey with Sonargaon University")
+  subheading   String?  @default("Get personalized admission guidance from our admission team.")
+  buttonLabel  String   @default("Get admission guidance")
+  footerNote   String?  @default("Our admission team will contact you shortly.")
+  updatedAt    DateTime @updatedAt
+
+  @@map("admission_popup_settings")
+}
+
+// programName is a text snapshot, not a Program FK — a lead stays
+// readable even if the programme is later renamed or removed.
+model AdmissionLead {
+  id          String   @id @default(cuid())
+  fullName    String
+  mobile      String
+  programName String
+  ipAddress   String?
+  userAgent   String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("admission_lead")
+}

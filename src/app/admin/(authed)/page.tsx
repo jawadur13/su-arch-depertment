@@ -66,6 +66,7 @@ export default async function DashboardHome() {
     contactPageContentConfigured, campusLocationCount,
     journeyCTAContentConfigured,
     legalPagesContentConfigured,
+    admissionLeadCount,
     adminUsersCount, previousSession,
   ] = await Promise.all([
     prisma.program.count(),
@@ -101,6 +102,7 @@ export default async function DashboardHome() {
     prisma.campusLocation.count(),
     prisma.journeyCTAContent.count(),
     prisma.legalPagesContent.count(),
+    prisma.admissionLead.count(),
     isSuperAdmin ? prisma.user.count() : Promise.resolve(null),
     prisma.session.findFirst({
       where: {
@@ -176,6 +178,7 @@ export default async function DashboardHome() {
           <StatCard label="Legal Pages"
                     value={legalPagesContentConfigured ? 'Configured' : 'Not configured'}
                     stringValue />
+          <StatCard label="Admission Leads" value={admissionLeadCount} />
           {isSuperAdmin && (
             <StatCard label="Total Admin Users" value={adminUsersCount!} />
           )}

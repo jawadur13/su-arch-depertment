@@ -1298,3 +1298,28 @@ export const journeyCTAContentUpdateSchema = z.object({
   secondaryCtaHref:     z.string().min(1).max(500),
   secondaryCtaExternal: z.boolean().optional().default(false),
 });
+
+// ─────────────────────────────────────────────────────────────────
+//  Admission lead-capture popup — singleton settings + public submit
+// ─────────────────────────────────────────────────────────────────
+
+// Bangladeshi mobile: 01[3-9] + 8 digits = 11 digits total. The
+// number is the entire point of this form (the admission team calls
+// it), so unlike every other phone field in this codebase it's
+// actually validated rather than accepted as free text.
+const bdMobileRegex = /^01[3-9]\d{8}$/;
+
+export const admissionLeadCreateSchema = z.object({
+  fullName:    z.string().trim().min(1).max(150),
+  mobile:      z.string().trim().regex(bdMobileRegex, 'Enter a valid Bangladeshi mobile number (e.g. 01712345678)'),
+  programName: z.string().trim().min(1).max(200),
+});
+
+export const admissionPopupSettingsUpdateSchema = z.object({
+  enabled:      z.boolean(),
+  delaySeconds: z.coerce.number().int().min(1).max(120),
+  heading:      z.string().trim().min(1).max(200),
+  subheading:   optionalNullableString,
+  buttonLabel:  z.string().trim().min(1).max(60),
+  footerNote:   optionalNullableString,
+});

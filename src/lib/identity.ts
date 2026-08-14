@@ -177,6 +177,13 @@ export const getPageHero = cache(async (pageKey: string) => {
   return prisma.pageHero.findUnique({ where: { pageKey } });
 });
 
+// Homepage lead-capture popup settings. Seeded by migration, so a
+// missing row only happens if the seed insert was rolled back —
+// callers check `?.enabled` and render nothing rather than crash.
+export const getAdmissionPopupSettings = cache(async () => {
+  return prisma.admissionPopupSettings.findUnique({ where: { id: 'singleton' } });
+});
+
 // ─────────────────────────────────────────────────────────────────
 //  About pages — Phase 4 (3 singletons)
 //    Each is a full row including the Json content fields so the

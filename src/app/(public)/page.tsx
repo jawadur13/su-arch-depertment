@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import HeroSection from '@/components/sections/HeroSection';
+import AdmissionLeadPopup from '@/components/common/AdmissionLeadPopup';
 import {
   getDepartmentIdentity,
   getProgramsWithCta,
@@ -8,6 +9,7 @@ import {
   getNewsHomeTop,
   getEventsHomeTop,
   getNoticesHomeTop,
+  getAdmissionPopupSettings,
 } from '@/lib/identity';
 
 function sectionSkeleton(minHeight: string) {
@@ -45,17 +47,22 @@ const ServicesSection = dynamic(() => import('@/components/sections/ServicesSect
 });
 
 export default async function HomePage() {
-  const [dept, programs, researchAreas, labs, newsTop, eventsTop, noticesTop] = await Promise.all([
-    getDepartmentIdentity(),
-    getProgramsWithCta(),
-    getResearchAreas(),
-    getLabs(),
-    getNewsHomeTop(),
-    getEventsHomeTop(),
-    getNoticesHomeTop(),
-  ]);
+  const [dept, programs, researchAreas, labs, newsTop, eventsTop, noticesTop, popupSettings] =
+    await Promise.all([
+      getDepartmentIdentity(),
+      getProgramsWithCta(),
+      getResearchAreas(),
+      getLabs(),
+      getNewsHomeTop(),
+      getEventsHomeTop(),
+      getNoticesHomeTop(),
+      getAdmissionPopupSettings(),
+    ]);
   return (
     <>
+      {popupSettings?.enabled && (
+        <AdmissionLeadPopup settings={popupSettings} programs={programs} />
+      )}
       <HeroSection
         imageUrls={[dept.heroImage1Url, dept.heroImage2Url, dept.heroImage3Url]}
         imageAlts={[dept.heroImage1Alt, dept.heroImage2Alt, dept.heroImage3Alt]}

@@ -48,6 +48,8 @@ import {
   Rocket,
   ShieldCheck,
   Wrench,
+  MessageSquarePlus,
+  UserPlus,
 } from 'lucide-react';
 import { useConfirm } from './ConfirmDialogProvider';
 
@@ -102,6 +104,11 @@ const CONTENT_HUBS_NAV: NavItem[] = [
 const NEWSLETTER_NAV: NavItem[] = [
   { href: '/admin/newsletter',             label: 'Page Content', icon: Info },
   { href: '/admin/newsletter-subscribers', label: 'Subscribers',  icon: Mail },
+];
+
+const ADMISSION_LEADS_NAV: NavItem[] = [
+  { href: '/admin/admission-popup', label: 'Popup Settings', icon: MessageSquarePlus },
+  { href: '/admin/admission-leads', label: 'Leads',          icon: UserPlus },
 ];
 
 const STUDENT_SOCIETY_NAV: NavItem[] = [
@@ -165,6 +172,8 @@ export default function Sidebar({
   const [contactPageOpen, setContactPageOpen] = useState<boolean>(contactPageActive);
   const newsletterActive = NEWSLETTER_NAV.some((n) => pathname?.startsWith(n.href));
   const [newsletterOpen, setNewsletterOpen] = useState<boolean>(newsletterActive);
+  const admissionLeadsActive = ADMISSION_LEADS_NAV.some((n) => pathname?.startsWith(n.href));
+  const [admissionLeadsOpen, setAdmissionLeadsOpen] = useState<boolean>(admissionLeadsActive);
 
   // Phase 11 — mobile/tablet drawer state. Persistent sidebar on
   // desktop (≥lg); off-canvas drawer with backdrop on smaller
@@ -538,6 +547,33 @@ export default function Sidebar({
         {newsletterOpen && (
           <div className="pl-6 space-y-1">
             {NEWSLETTER_NAV.map(({ href, label }) => (
+              <Link key={href} href={href} className={linkClass(!!isActive(href))}>
+                <span className="text-[10px] leading-none">●</span>
+                {label}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* Admission Leads — homepage popup settings + captured leads,
+            same settings+list grouping as Newsletter above. */}
+        <button
+          type="button"
+          onClick={() => setAdmissionLeadsOpen((v) => !v)}
+          aria-expanded={admissionLeadsOpen}
+          className={`w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            admissionLeadsActive ? 'text-accent' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <span className="flex items-center gap-3">
+            <UserPlus size={16} />
+            Admission Leads
+          </span>
+          <ChevronDown size={14} className={`transition-transform ${admissionLeadsOpen ? 'rotate-180' : ''}`} />
+        </button>
+        {admissionLeadsOpen && (
+          <div className="pl-6 space-y-1">
+            {ADMISSION_LEADS_NAV.map(({ href, label }) => (
               <Link key={href} href={href} className={linkClass(!!isActive(href))}>
                 <span className="text-[10px] leading-none">●</span>
                 {label}
