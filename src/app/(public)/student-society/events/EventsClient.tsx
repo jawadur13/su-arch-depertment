@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { Tag, Calendar, Clock, ArrowRight } from 'lucide-react';
+import EventArtwork from '@/components/events/EventArtwork';
 
 // Plain serializable shape — eventDate is a string (or null) because
 // Date objects can't cross the server→client boundary in Next 15
@@ -128,15 +128,14 @@ export default function EventsClient({ events }: { events: readonly EventCardRow
                 className="group bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 overflow-hidden flex flex-col"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                  <Image
+                  <EventArtwork
                     src={ev.imageUrl}
                     alt={ev.shortTitle}
-                    fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="group-hover:scale-105 transition-transform duration-500"
                   />
                   <span
-                    className={`absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-sm ${statusStyle} bg-white/95`}
+                    className={`absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-sm ${statusStyle} bg-white/95`}
                   >
                     <Tag size={12} />
                     {ev.status === 'Current' ? 'Current Events' : ev.status}

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
@@ -14,7 +13,8 @@ import {
 } from 'lucide-react';
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
-import { getEventBySlug, getEventSlugs } from '@/lib/identity';
+import EventArtwork from '@/components/events/EventArtwork';
+import { getEventBySlug, getEventSlugs, getPageHero } from '@/lib/identity';
 
 export async function generateStaticParams() {
   const slugs = await getEventSlugs();
@@ -68,7 +68,10 @@ export default async function EventDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const ev = await getEventBySlug(slug);
+  const [ev, hero] = await Promise.all([
+    getEventBySlug(slug),
+    getPageHero('student-society-events'),
+  ]);
   if (!ev) notFound();
 
   const description = coerceParagraphs(ev.description);
@@ -77,10 +80,15 @@ export default async function EventDetailPage({
   const catStyle = CATEGORY_STYLES[ev.category] ?? 'bg-gray-100 text-gray-700';
 
   return (
+    // The hero is deliberately NOT ev.imageUrl. Event art is often a
+    // 530-700px poster; stretching one across a full-bleed 2560px hero
+    // is a ~4x upscale. The shared events hero is a real wide photo, and
+    // the artwork itself is shown intact in the cover below.
     <PageShell
       title={ev.shortTitle}
       overline="Events"
-      image={ev.imageUrl}
+      image={hero?.heroImageUrl ?? '/assets/events-hero.webp'}
+      imagePosition={hero ? `center ${hero.heroImageVerticalPercent}%` : undefined}
       contentClassName="bg-gray-50 py-12 md:py-20"
     >
       <Container>
@@ -97,15 +105,15 @@ export default async function EventDetailPage({
         <div className="grid lg:grid-cols-[1fr_360px] gap-6">
           {/* Main column — cover + title + short description */}
           <article className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="overflow-hidden bg-gray-100">
-              <Image
+            {/* 4:3 rather than the card's 16:10 — portrait posters are
+                the reason this page exists, and a taller frame renders
+                them large enough to actually read. */}
+            <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+              <EventArtwork
                 src={ev.imageUrl}
                 alt={ev.shortTitle}
-                width={1200}
-                height={750}
                 sizes="(min-width: 1280px) 800px, 100vw"
                 priority
-                className="block w-full h-auto"
               />
             </div>
             <div className="p-6 md:p-8">

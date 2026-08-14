@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Calendar } from 'lucide-react';
+import EventArtwork from '../events/EventArtwork';
 import Container from '../ui/Container';
 import SectionTitle from '../ui/SectionTitle';
 import Button from '../ui/Button';
@@ -66,16 +66,15 @@ export default function EventsSection({ events }: Props) {
                 whileHover={{ y: -10 }}
                 className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-premium flex flex-col group"
               >
-                <div className="h-52 relative overflow-hidden bg-gray-100">
-                  <Image
+                <div className="aspect-[16/10] relative overflow-hidden bg-gray-100">
+                  <EventArtwork
                     src={event.imageUrl}
                     alt={event.shortTitle}
-                    fill
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="transition-transform duration-500 group-hover:scale-110"
                   />
                   {dateLabel && (
-                    <div className="absolute top-4 left-4 flex items-center gap-2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-sm">
+                    <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-sm">
                       <Calendar size={14} className="text-accent" />
                       <span className="text-xs font-bold text-primary">{dateLabel}</span>
                     </div>
