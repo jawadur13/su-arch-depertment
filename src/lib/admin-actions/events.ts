@@ -57,8 +57,10 @@ async function requireAuth(): Promise<ActionResult | null> {
 }
 
 // Event content lives on /student-society/events, /[slug], and the
-// homepage EventsSection (top 3 by createdAt — see CP6.3 for exact
-// sort). Every mutation invalidates all surfaces.
+// homepage EventsSection (3 cards: isFeatured first, then newest by
+// event date — see getEventsHomeTop in src/lib/identity.ts). Every
+// mutation invalidates all surfaces, including `/` so a homepage
+// tick/untick shows up immediately.
 function revalidateEventSurfaces(slug?: string) {
   revalidatePath('/student-society/events');
   if (slug) revalidatePath(`/student-society/events/${slug}`);
@@ -87,6 +89,7 @@ function readEventRow(formData: FormData) {
     ctaLabel:      emptyToNull(formData.get('ctaLabel')),
     ctaHref:       emptyToNull(formData.get('ctaHref')),
     ctaExternal:   getBool(formData, 'ctaExternal'),
+    isFeatured:    getBool(formData, 'isFeatured'),
   };
 }
 

@@ -75,6 +75,20 @@ export default function EventForm({ initial }: { initial: EventRow | null }) {
         </div>
       </Card>
 
+      <Card title="Homepage">
+        <p className="text-xs text-gray-500 -mt-2">
+          The homepage &quot;Departmental Events&quot; section always shows 3 cards. Ticked
+          events go first (newest event date first), and any remaining slots fill
+          automatically with the most recent events. Tick up to 3 — if more than 3 are
+          ticked, the 3 with the newest event dates are the ones shown.
+        </p>
+        <label className="inline-flex items-center gap-2 text-sm text-gray-700">
+          <input type="checkbox" name="isFeatured" defaultChecked={initial?.isFeatured ?? false}
+                 className="rounded border-gray-300 text-accent focus:ring-accent" />
+          Show on homepage
+        </label>
+      </Card>
+
       <Card title="Cover image">
         <ImageUploader kind="event-image" name="image" aspectRatio="wide"
                        initialUrl={initial?.imageUrl}

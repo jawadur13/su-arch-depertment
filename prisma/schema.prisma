@@ -746,6 +746,12 @@ model Event {
   ctaLabel      String?
   ctaHref       String?
   ctaExternal   Boolean   @default(false)
+  // isFeatured — homepage promotion. The EventsSection shows 3; featured
+  // rows sort first and the newest events backfill the remainder, so the
+  // section always fills even when nothing is ticked. No index: a single
+  // -column one can't serve the compound isFeatured/eventDate/createdAt
+  // sort anyway.
+  isFeatured    Boolean   @default(false)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 

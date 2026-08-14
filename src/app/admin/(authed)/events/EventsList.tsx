@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pencil, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -15,10 +16,19 @@ const STATUS_STYLES: Record<string, string> = {
   Upcoming: 'bg-accent/10 text-accent',
 };
 
-export default function EventsList({ items: initialItems }: { items: EventRow[] }) {
+export default function EventsList({
+  items: initialItems,
+  // IDs the homepage will actually render (computed by the parent page).
+  // Defaults to empty so this stays usable standalone.
+  homepageIds = [],
+}: {
+  items: EventRow[];
+  homepageIds?: string[];
+}) {
   const router = useRouter();
   const confirm = useConfirm();
   const { items, removeById } = useAdminListItems(initialItems);
+  const homepageSet = useMemo(() => new Set(homepageIds), [homepageIds]);
 
   async function handleDelete(id: string, title: string) {
     const ok = await confirm({
@@ -62,13 +72,20 @@ export default function EventsList({ items: initialItems }: { items: EventRow[] 
             <img
               src={event.imageUrl}
               alt=""
-              className="w-16 h-12 rounded bg-gray-50 border border-gray-200 object-cover shrink-0"
+              className="w-16 h-12 rounded bg-gray-50 border border-gray-200 object-contain shrink-0"
             />
             <div className="min-w-0">
               <div className="flex items-center gap-2 mb-0.5">
                 <span className={`inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${STATUS_STYLES[event.status] ?? 'bg-gray-200 text-gray-700'}`}>
                   {event.status}
                 </span>
+                {event.isFeatured && (
+                  <span className={`inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
+                    homepageSet.has(event.id) ? 'bg-accent/10 text-accent' : 'bg-amber-100 text-amber-800'
+                  }`}>
+                    {homepageSet.has(event.id) ? 'On homepage' : 'Ticked · not shown'}
+                  </span>
+                )}
                 <span className="text-xs text-gray-500">{event.category}</span>
               </div>
               <div className="font-medium text-gray-900 truncate">{event.shortTitle}</div>

@@ -618,6 +618,8 @@ export const eventCreateSchema = z.object({
   ctaLabel:      optionalNullableString,
   ctaHref:       optionalNullableString,
   ctaExternal:   z.boolean().default(false),
+  // Homepage promotion — see getEventsHomeTop() in src/lib/identity.ts.
+  isFeatured:    z.boolean().default(false),
 });
 
 export const eventUpdateSchema = eventCreateSchema.partial();

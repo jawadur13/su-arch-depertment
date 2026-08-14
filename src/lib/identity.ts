@@ -328,10 +328,20 @@ export const getEventSlugs = cache(async () => {
   return rows.map((r) => r.slug);
 });
 
-// Homepage EventsSection — top 3 (same sort as full list).
+// Homepage EventsSection — always exactly 3 cards. Admin-ticked rows
+// (isFeatured) lead; the remaining slots backfill with the newest events
+// using the same sort as the full list. Postgres orders booleans
+// false < true, so `isFeatured: 'desc'` puts ticked rows first — and when
+// nothing is ticked every row is false, making the first key a no-op that
+// collapses this to the original date-only behaviour. More than 3 ticked
+// is harmless: take:3 keeps the 3 that sort highest.
 export const getEventsHomeTop = cache(async () => {
   return prisma.event.findMany({
-    orderBy: [{ eventDate: { sort: 'desc', nulls: 'last' } }, { createdAt: 'desc' }],
+    orderBy: [
+      { isFeatured: 'desc' },
+      { eventDate: { sort: 'desc', nulls: 'last' } },
+      { createdAt: 'desc' },
+    ],
     take: 3,
   });
 });

@@ -15,6 +15,17 @@ export default async function EventsAdminPage() {
     orderBy: [{ eventDate: { sort: 'desc', nulls: 'last' } }, { createdAt: 'desc' }],
   });
 
+  // Which 3 the homepage will actually render. Mirrors getEventsHomeTop()
+  // in src/lib/identity.ts — Array#sort is stable, so re-sorting this
+  // already-date-ordered list by isFeatured alone reproduces that SQL
+  // ORDER BY exactly. Keep the two in sync. Costs no extra query since
+  // the full list is already loaded.
+  const homepageIds = [...events]
+    .sort((a, b) => Number(b.isFeatured) - Number(a.isFeatured))
+    .slice(0, 3)
+    .map((e) => e.id);
+  const featuredCount = events.filter((e) => e.isFeatured).length;
+
   return (
     <div className="space-y-8 max-w-3xl">
       <header>
@@ -22,6 +33,12 @@ export default async function EventsAdminPage() {
         <p className="mt-1 text-sm text-gray-500">
           Events for <code className="font-mono">/student-society/events</code> and the homepage EventsSection. Sorted by event date (newest first; undated rows last).
         </p>
+        {featuredCount > 3 && (
+          <p className="mt-2 text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+            {featuredCount} events are ticked for the homepage but only 3 fit. The 3 with
+            the newest event dates are shown; the rest are marked below.
+          </p>
+        )}
       </header>
 
       <section className="space-y-3">
@@ -39,7 +56,7 @@ export default async function EventsAdminPage() {
             <Plus size={16} /> Add event
           </Link>
         </div>
-        <EventsList items={events} />
+        <EventsList items={events} homepageIds={homepageIds} />
       </section>
     </div>
   );
