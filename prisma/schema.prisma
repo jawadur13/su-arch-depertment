@@ -935,6 +935,13 @@ model Syllabus {
   pdfUrl        String?
   pdfPublicId   String?
   pdfFileName   String?
+  // Visitor-facing access switch. The card (cover/title/level/summary)
+  // always renders regardless of this flag — only the PDF file itself
+  // is gated. Toggling this also flips the Cloudinary asset's
+  // access_mode (see src/lib/cloudinary.ts setAssetAccessMode), which
+  // is what makes a previously-shared/bookmarked direct link actually
+  // stop working, not just disappear from this site's own pages.
+  pdfEnabled    Boolean  @default(true)
   summary       String   @db.Text
   displayOrder  Int
   createdAt     DateTime @default(now())

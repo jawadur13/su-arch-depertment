@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/db';
 import { getSession } from '@/lib/auth-server';
+import { setAssetAccessMode } from '@/lib/cloudinary';
 import { syllabusCreateSchema, syllabusUpdateSchema } from '@/lib/validation';
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
@@ -16,6 +17,27 @@ function emptyToNull(v: FormDataEntryValue | null): string | null {
   if (typeof v !== 'string') return null;
   const t = v.trim();
   return t.length > 0 ? t : null;
+}
+function getBool(fd: FormData, key: string): boolean {
+  return fd.get(key) === 'on';
+}
+
+// Syncs the Cloudinary asset's access_mode to match pdfEnabled BEFORE
+// the DB write, so the two can never disagree about whether the file
+// is actually protected — a failed Cloudinary call rejects the whole
+// save rather than leaving the DB saying "off" while the file stays
+// publicly reachable.
+async function syncPdfAccess(pdfPublicId: string | null, pdfEnabled: boolean): Promise<ActionResult | null> {
+  if (!pdfPublicId) return null;
+  try {
+    await setAssetAccessMode(pdfPublicId, pdfEnabled ? 'public' : 'authenticated');
+  } catch (e) {
+    return {
+      ok: false,
+      error: `Could not update PDF access on Cloudinary: ${e instanceof Error ? e.message : 'unknown error'}`,
+    };
+  }
+  return null;
 }
 async function requireAuth(): Promise<ActionResult | null> {
   const session = await getSession();
@@ -42,6 +64,7 @@ function readSyllabusRow(formData: FormData) {
     pdfUrl:        emptyToNull(formData.get('pdfUrl')),
     pdfPublicId:   emptyToNull(formData.get('pdfPublicId')),
     pdfFileName:   emptyToNull(formData.get('pdfFileName')),
+    pdfEnabled:    getBool(formData, 'pdfEnabled'),
     summary:       getStr(formData, 'summary'),
   };
 }
@@ -57,6 +80,9 @@ export async function createSyllabusAction(
   if (!parsed.success) {
     return { ok: false, error: parsed.error.issues.map((i) => `${i.path.join('.') || '(root)'}: ${i.message}`).join('; ') };
   }
+
+  const accessError = await syncPdfAccess(parsed.data.pdfPublicId ?? null, parsed.data.pdfEnabled);
+  if (accessError) return accessError;
 
   const last = await prisma.syllabus.findFirst({ orderBy: { displayOrder: 'desc' }, select: { displayOrder: true } });
   const displayOrder = (last?.displayOrder ?? -1) + 1;
@@ -85,6 +111,9 @@ export async function updateSyllabusAction(
   if (!parsed.success) {
     return { ok: false, error: parsed.error.issues.map((i) => `${i.path.join('.') || '(root)'}: ${i.message}`).join('; ') };
   }
+
+  const accessError = await syncPdfAccess(parsed.data.pdfPublicId ?? null, parsed.data.pdfEnabled ?? true);
+  if (accessError) return accessError;
 
   try {
     await prisma.syllabus.update({ where: { id }, data: parsed.data });

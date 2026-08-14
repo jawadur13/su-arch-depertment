@@ -39,7 +39,12 @@ export default async function SyllabusPage() {
             department: s.department,
             level:      s.level,
             coverUrl:   s.coverUrl,
-            pdfUrl:     s.pdfUrl,
+            // Only the real Cloudinary URL when a PDF exists AND
+            // access is enabled — this is the server/client boundary
+            // that keeps a disabled PDF's URL out of the page
+            // entirely (it never reaches the client component).
+            pdfUrl:     s.pdfEnabled ? s.pdfUrl : null,
+            hasPdf:     Boolean(s.pdfUrl),
             summary:    s.summary,
           }))}
         />

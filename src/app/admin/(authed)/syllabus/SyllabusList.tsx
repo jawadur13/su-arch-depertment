@@ -63,6 +63,11 @@ export default function SyllabusList({ items: initialItems }: { items: Syllabus[
                   {s.level}
                 </span>
                 {s.pdfUrl && <FileText size={14} className="text-accent" />}
+                {s.pdfUrl && !s.pdfEnabled && (
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-red-100 text-red-700">
+                    PDF off
+                  </span>
+                )}
               </div>
               <div className="font-medium text-gray-900 text-sm truncate">{s.shortTitle}</div>
               <div className="text-xs text-gray-500 truncate font-mono">/{s.slug}</div>

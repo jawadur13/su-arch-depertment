@@ -11,7 +11,12 @@ export type SyllabusCardRow = {
   department: string;
   level: string;
   coverUrl: string;
+  // Present only when a PDF exists AND the admin has access enabled.
   pdfUrl: string | null;
+  // True when a PDF was uploaded at all, regardless of the access
+  // toggle — distinguishes "no PDF yet" from "PDF exists but disabled"
+  // for the fallback message below.
+  hasPdf: boolean;
   summary: string;
 };
 
@@ -148,7 +153,7 @@ export default function SyllabusClient({ items }: { items: readonly SyllabusCard
                   </div>
                 ) : (
                   <span className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-gray-100 text-gray-400 text-sm font-semibold rounded-md cursor-not-allowed">
-                    PDF not uploaded yet
+                    {s.hasPdf ? 'PDF not available' : 'PDF not uploaded yet'}
                   </span>
                 )}
               </div>

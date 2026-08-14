@@ -139,3 +139,25 @@ export async function deleteAsset(publicId: string) {
   ensureConfigured();
   return cloudinary.uploader.destroy(publicId, { invalidate: true });
 }
+
+// ─────────────────────────────────────────────────────────────────
+//  Access-mode toggle (Syllabus PDF visitor switch).
+//
+//  Flips access_mode on an EXISTING asset without touching its
+//  public_id or URL. 'public' = normal delivery; 'authenticated' =
+//  that exact delivery URL starts returning 401. This is the only way
+//  to actually revoke access to a link someone already has — omitting
+//  the URL from our own pages only stops NEW visitors from finding it.
+// ─────────────────────────────────────────────────────────────────
+export async function setAssetAccessMode(
+  publicId: string,
+  mode: 'public' | 'authenticated',
+  resourceType: 'image' | 'video' | 'raw' = 'image',
+) {
+  ensureConfigured();
+  return cloudinary.api.update(publicId, {
+    resource_type: resourceType,
+    type: 'upload',
+    access_mode: mode,
+  });
+}

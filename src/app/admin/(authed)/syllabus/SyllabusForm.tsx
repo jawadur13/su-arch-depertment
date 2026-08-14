@@ -75,6 +75,21 @@ export default function SyllabusForm({ initial }: { initial: Syllabus | null }) 
         <input type="hidden" name="pdfUrl" value={pdf.url} />
         <input type="hidden" name="pdfPublicId" value={pdf.publicId} />
         <input type="hidden" name="pdfFileName" value={pdf.fileName} />
+
+        <div className="pt-2 border-t border-gray-100">
+          <label className="inline-flex items-center gap-2 text-sm text-gray-700">
+            <input type="checkbox" name="pdfEnabled" defaultChecked={initial?.pdfEnabled ?? true}
+                   className="rounded border-gray-300 text-accent focus:ring-accent" />
+            Allow visitors to view &amp; download the PDF
+          </label>
+          <p className="text-xs text-gray-500 mt-1.5">
+            This card — cover image, title, level, department, and summary — always
+            stays visible on the public page either way. Turning this off only blocks
+            the PDF file itself: visitors see a &quot;PDF not available&quot; message
+            instead of the View/Download buttons, and the file becomes unreachable
+            even via a direct link.
+          </p>
+        </div>
       </Card>
 
       {state.ok === false && (

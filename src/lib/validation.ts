@@ -770,6 +770,7 @@ export const syllabusCreateSchema = z.object({
   pdfUrl:        optionalNullableString,
   pdfPublicId:   optionalNullableString,
   pdfFileName:   optionalNullableString,
+  pdfEnabled:    z.boolean().default(true),
   summary:       z.string().min(1),
 });
 
