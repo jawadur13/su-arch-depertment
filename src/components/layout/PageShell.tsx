@@ -13,6 +13,18 @@ const slugToTitle = (slug: string) =>
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
 
+// Nav-dropdown category segments with no landing page of their own
+// (no page.tsx, no redirect) — linking them 404s. Matched against the
+// full cumulative href, e.g. '/admission/programs', not just the
+// segment name, so a same-named segment elsewhere isn't caught by
+// mistake.
+const NON_NAVIGABLE_PATHS = new Set([
+  '/about',
+  '/admission',
+  '/admission/programs',
+  '/student-society',
+]);
+
 interface PageShellProps {
   title: string;
   subtitle?: string;
@@ -129,16 +141,23 @@ export default function PageShell({
               {segments.map((seg, idx) => {
                 const href = '/' + segments.slice(0, idx + 1).join('/');
                 const isLast = idx === segments.length - 1;
+                // The current page's own title is already known (it's
+                // rendered as the <h1> above) — use it instead of
+                // re-deriving a label from the URL slug, so the crumb
+                // matches the page's real title verbatim ("Dean's
+                // Message", "Mission & Vision", an event/program name)
+                // rather than a naively kebab-split approximation.
+                const label = isLast ? title : slugToTitle(seg);
                 return (
                   <span key={href} className="inline-flex items-center gap-2">
                     <ChevronRight size={13} className="opacity-50" />
                     {isLast ? (
-                      <span className="text-button-yellow font-semibold">
-                        {slugToTitle(seg)}
-                      </span>
+                      <span className="text-button-yellow font-semibold">{label}</span>
+                    ) : NON_NAVIGABLE_PATHS.has(href) ? (
+                      <span>{label}</span>
                     ) : (
                       <a href={href} className="hover:text-button-yellow transition-colors">
-                        {slugToTitle(seg)}
+                        {label}
                       </a>
                     )}
                   </span>
