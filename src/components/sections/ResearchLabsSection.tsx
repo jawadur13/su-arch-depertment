@@ -22,9 +22,17 @@ type Props = {
   labs: readonly LabRow[];
 };
 
+// Largest count of cards visible at once (the lg breakpoint below shows
+// 4 per row). Below that, everything already fits on screen — looping
+// the array just renders the same cards twice with nothing to scroll
+// to, which reads as a duplicate-content bug rather than a carousel.
+const MAX_VISIBLE_CARDS = 4;
+
 export default function ResearchLabsSection({ labs }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const needsCarousel = labs.length > MAX_VISIBLE_CARDS;
+  const displayLabs = needsCarousel ? [...labs, ...labs] : labs;
 
   // After a smooth scroll settles, jump silently across the duplicate boundary
   // so forward and backward feel infinite.
@@ -39,7 +47,7 @@ export default function ResearchLabsSection({ labs }: Props) {
   };
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !needsCarousel) return;
     const intervalId = window.setInterval(() => {
       const el = scrollRef.current;
       if (!el) return;
@@ -51,7 +59,7 @@ export default function ResearchLabsSection({ labs }: Props) {
       window.setTimeout(() => wrapIfNeeded(el), 700);
     }, 4000);
     return () => window.clearInterval(intervalId);
-  }, [isPaused]);
+  }, [isPaused, needsCarousel]);
 
   const scroll = (direction: 'left' | 'right') => {
     const el = scrollRef.current;
@@ -83,40 +91,46 @@ export default function ResearchLabsSection({ labs }: Props) {
               Research &amp; Labs
             </h2>
           </div>
-          <div className="hidden md:flex gap-4">
-            <button
-              onClick={() => scroll('left')}
-              aria-label="Previous labs"
-              className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              aria-label="Next labs"
-              className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-all shadow-lg"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
+          {needsCarousel && (
+            <div className="hidden md:flex gap-4">
+              <button
+                onClick={() => scroll('left')}
+                aria-label="Previous labs"
+                className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={() => scroll('right')}
+                aria-label="Next labs"
+                className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-all shadow-lg"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="relative -mx-4 sm:mx-0">
-          {/* Mobile-only side arrows (overlay) */}
-          <button
-            onClick={() => scroll('left')}
-            aria-label="Previous labs"
-            className="md:hidden absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/95 shadow-lg border border-gray-200 flex items-center justify-center text-primary transition-opacity"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={() => scroll('right')}
-            aria-label="Next labs"
-            className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-primary text-white shadow-lg flex items-center justify-center transition-opacity"
-          >
-            <ChevronRight size={20} />
-          </button>
+          {needsCarousel && (
+            <>
+              {/* Mobile-only side arrows (overlay) */}
+              <button
+                onClick={() => scroll('left')}
+                aria-label="Previous labs"
+                className="md:hidden absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/95 shadow-lg border border-gray-200 flex items-center justify-center text-primary transition-opacity"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => scroll('right')}
+                aria-label="Next labs"
+                className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-primary text-white shadow-lg flex items-center justify-center transition-opacity"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </>
+          )}
 
         <div
           ref={scrollRef}
@@ -124,9 +138,11 @@ export default function ResearchLabsSection({ labs }: Props) {
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pt-4 pb-8 no-scrollbar px-4 sm:px-0"
+          className={`flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pt-4 pb-8 no-scrollbar px-4 sm:px-0 ${
+            needsCarousel ? '' : 'justify-center'
+          }`}
         >
-          {[...labs, ...labs].map((lab, idx) => (
+          {displayLabs.map((lab, idx) => (
             <motion.a
               key={`${lab.slug}-${idx}`}
               href={`${LAB_FACILITY_PATH}#${lab.slug}`}
