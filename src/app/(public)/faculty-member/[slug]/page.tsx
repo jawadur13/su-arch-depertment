@@ -124,6 +124,7 @@ export default async function FacultyDetailPage({
       title={member.name}
       overline="Faculty"
       image={hero?.heroImageUrl ?? '/assets/faculty-hero.webp'}
+      imagePosition={hero ? `center ${hero.heroImageVerticalPercent}%` : undefined}
       contentClassName="bg-gray-50 py-12 md:py-20"
     >
       <Container>
