@@ -1,0 +1,449 @@
+- generic [active] [ref=f19e1]:
+  - navigation [ref=f19e2]:
+    - generic [ref=f19e3]:
+      - generic [ref=f19e6]:
+        - generic [ref=f19e7]:
+          - link "Virtual Tour" [disabled] [ref=f19e8]:
+            - /url: "#"
+          - generic [ref=f19e9]: "|"
+        - generic [ref=f19e10]:
+          - link "IQAC" [ref=f19e11] [cursor=pointer]:
+            - /url: https://su.edu.bd/iqac
+          - generic [ref=f19e12]: "|"
+        - generic [ref=f19e13]:
+          - link "Career" [ref=f19e14] [cursor=pointer]:
+            - /url: https://su.edu.bd/welcome/career
+          - generic [ref=f19e15]: "|"
+        - generic [ref=f19e16]:
+          - link "Archive" [disabled] [ref=f19e17]:
+            - /url: "#"
+          - generic [ref=f19e18]: "|"
+        - link "Contact" [ref=f19e20] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f19e22]:
+        - link "Facebook" [ref=f19e23] [cursor=pointer]:
+          - /url: https://www.facebook.com/SonargaonUniversity
+        - link "LinkedIn" [ref=f19e27] [cursor=pointer]:
+          - /url: https://www.linkedin.com/school/14451954/
+        - link "Youtube" [ref=f19e33] [cursor=pointer]:
+          - /url: https://www.youtube.com/@SonargaonUniversityEdu
+    - generic [ref=f19e38]:
+      - link "Sonargaon University — Home" [ref=f19e39] [cursor=pointer]:
+        - /url: /
+        - img "Sonargaon University" [ref=f19e40]
+      - generic [ref=f19e41]:
+        - generic [ref=f19e42]:
+          - link "ERP" [ref=f19e43] [cursor=pointer]:
+            - /url: http://sue.su.edu.bd:5081/sonargaon_erp/
+          - link "Convoc. Reg." [ref=f19e47] [cursor=pointer]:
+            - /url: http://sue.su.edu.bd:5081/sonargaon_erp/student/convocation_registration
+          - link "Verification" [ref=f19e51] [cursor=pointer]:
+            - /url: https://su.edu.bd/welcome/degree_verification
+        - link "Apply Now" [ref=f19e55] [cursor=pointer]:
+          - /url: http://sue.su.edu.bd:5081/sonargaon_erp/siteadmin/admission_info
+    - generic [ref=f19e59]:
+      - link "About" [ref=f19e61] [cursor=pointer]:
+        - /url: "#"
+      - link "Faculty Member" [ref=f19e65] [cursor=pointer]:
+        - /url: /faculty-member
+      - link "Admission" [ref=f19e67] [cursor=pointer]:
+        - /url: "#"
+      - link "Student Society" [ref=f19e71] [cursor=pointer]:
+        - /url: "#"
+      - link "Contact" [ref=f19e75] [cursor=pointer]:
+        - /url: /contact
+    - generic:
+      - generic:
+        - generic:
+          - searchbox "Search pages, faculty, FAQs, labs, clubs…"
+          - button "Close search"
+        - generic:
+          - paragraph: Type a keyword — pages, faculty names, lab names, FAQs, clubs, alumni, research…
+  - main [ref=f19e76]:
+    - generic [ref=f19e77]:
+      - generic [ref=f19e78]:
+        - generic [ref=f19e79]:
+          - img "Sonargaon University Architecture Department" [ref=f19e81]
+          - img "Sonargaon University Architecture students and faculty" [ref=f19e83]
+          - img "Sonargaon University Architecture campus" [ref=f19e85]
+        - generic [ref=f19e90]:
+          - generic [ref=f19e91]: Department of
+          - heading "Architecture" [level=1] [ref=f19e95]
+          - paragraph [ref=f19e96]: Shaping architects who design tomorrow’s spaces, structures, and cities.
+        - generic [ref=f19e97]:
+          - button "Show slide 1" [ref=f19e98]
+          - button "Show slide 2" [ref=f19e99]
+          - button "Show slide 3" [ref=f19e100]
+        - generic [ref=f19e103]:
+          - link "Home" [ref=f19e104] [cursor=pointer]:
+            - /url: /
+          - generic [ref=f19e110]: Arc
+      - generic [ref=f19e112]:
+        - heading "Department of Architecture" [level=2] [ref=f19e113]
+        - generic [ref=f19e114]:
+          - generic [ref=f19e115]:
+            - paragraph [ref=f19e116]: The Department of Architecture, under the Faculty of Science & Engineering, offers the Bachelor of Architecture (B.Arch) degree at Sonargaon University (SU). The programme follows the academic and professional standards of the Institute of Architects Bangladesh (IAB), with a continuously updated curriculum designed to meet contemporary needs while allowing flexibility based on students’ interests. Design studios form the core of the programme, supported by a 1:10 teacher-student ratio, industry-oriented projects, and research-based learning. The department also promotes co-curricular activities, cultural engagement, and strong connections with industry and other stakeholders to prepare students for successful professional careers.
+            - generic [ref=f19e117]:
+              - link "Explore More" [ref=f19e118] [cursor=pointer]:
+                - /url: /about/overview
+              - link "Dean's Message" [ref=f19e119] [cursor=pointer]:
+                - /url: /about/deans-message
+          - img "Department of Architecture students celebrating with trophies at the AYDA Awards ceremony" [ref=f19e121]
+      - generic [ref=f19e123]:
+        - generic [ref=f19e124]:
+          - generic [ref=f19e125]: Academic Programs
+          - heading "Programmes Offered" [level=2] [ref=f19e128]
+        - article [ref=f19e131]:
+          - generic [ref=f19e132]:
+            - img "Undergraduate —Bachelor of Architecture" [ref=f19e133]
+            - generic [ref=f19e134]: 5 Years · 10 Semesters
+          - generic [ref=f19e138]:
+            - heading "Undergraduate —Bachelor of Architecture" [level=3] [ref=f19e139]
+            - paragraph [ref=f19e140]: Our flagship undergraduate architecture program develops a strong foundation in architectural design, technical systems, and creative practice, combining intensive design studios, modern building technology, sustainability, and urban studies to prepare graduates for professional practice, research, and advanced postgraduate study.
+            - generic [ref=f19e141]:
+              - paragraph [ref=f19e142]: Specializations
+              - list [ref=f19e143]:
+                - listitem [ref=f19e144]: Architectural Design
+                - listitem [ref=f19e148]: Urban & Community Design
+                - listitem [ref=f19e152]: Sustainable Architecture
+                - listitem [ref=f19e156]: Landscape & Site Design
+                - listitem [ref=f19e160]: Digital & Computational Design
+                - listitem [ref=f19e164]: Heritage & Conservation
+            - link "View More" [ref=f19e168] [cursor=pointer]:
+              - /url: /admission/programs/b-arch
+      - generic [ref=f19e172]:
+        - heading "Quick Links" [level=3] [ref=f19e177]
+        - generic [ref=f19e178]:
+          - link "Admission Requirements" [ref=f19e179] [cursor=pointer]:
+            - /url: /admission/requirements
+          - link "Tuition Fees" [ref=f19e180] [cursor=pointer]:
+            - /url: /admission/tuition-fees
+          - link "Transfer Credits" [ref=f19e181] [cursor=pointer]:
+            - /url: /admission/transfer-credits
+          - link "Waiver & Scholarship" [ref=f19e182] [cursor=pointer]:
+            - /url: /admission/waiver-scholarship
+          - link "ERP" [ref=f19e183] [cursor=pointer]:
+            - /url: http://sue.su.edu.bd:5081/sonargaon_erp/
+          - link "Admission Notice" [ref=f19e184] [cursor=pointer]:
+            - /url: /admission/notice
+          - link "Library" [ref=f19e185] [cursor=pointer]:
+            - /url: http://lib.su.edu.bd
+      - generic [ref=f19e189]:
+        - generic [ref=f19e190]:
+          - heading "Academic Notices & Announcements" [level=2] [ref=f19e191]
+          - paragraph [ref=f19e192]: Stay up to date with the latest from the Department of Architecture — registration, holidays, and student services.
+        - generic [ref=f19e193]:
+          - 'link "View notice: Final Registration Confirmation for Summer-2026" [ref=f19e194] [cursor=pointer]':
+            - /url: /assets/notices/final-registration-summer-2026.webp
+            - generic [ref=f19e195]:
+              - generic [ref=f19e196]: 27 Apr, 2026
+              - heading "Final Registration Confirmation for Summer-2026" [level=3] [ref=f19e197]
+          - 'link "View notice: Spring-2026 Semester Break" [ref=f19e202] [cursor=pointer]':
+            - /url: /assets/notices/spring-2026-semester-break.webp
+            - generic [ref=f19e203]:
+              - generic [ref=f19e204]: 26 Apr, 2026
+              - heading "Spring-2026 Semester Break" [level=3] [ref=f19e205]
+          - 'link "View notice: Bengali New Year 1433 Holiday" [ref=f19e210] [cursor=pointer]':
+            - /url: /assets/notices/bengali-new-year-1433.webp
+            - generic [ref=f19e211]:
+              - generic [ref=f19e212]: 11 Apr, 2026
+              - heading "Bengali New Year 1433 Holiday" [level=3] [ref=f19e213]
+          - 'link "View notice: Savar Route Bus Service Adjustment" [ref=f19e218] [cursor=pointer]':
+            - /url: /assets/notices/savar-route-bus-service.webp
+            - generic [ref=f19e219]:
+              - generic [ref=f19e220]: 07 Apr, 2026
+              - heading "Savar Route Bus Service Adjustment" [level=3] [ref=f19e221]
+          - 'link "View notice: Mandatory Teacher Evaluation Rating (TER)" [ref=f19e226] [cursor=pointer]':
+            - /url: /assets/notices/ter-summer-2026.webp
+            - generic [ref=f19e227]:
+              - generic [ref=f19e228]: 05 Apr, 2026
+              - heading "Mandatory Teacher Evaluation Rating (TER)" [level=3] [ref=f19e229]
+        - link [ref=f19e235] [cursor=pointer]:
+          - /url: /student-society/notice-board
+          - button "View All Notices" [ref=f19e236]
+      - generic [ref=f19e240]:
+        - generic [ref=f19e241]:
+          - generic [ref=f19e242]:
+            - generic [ref=f19e243]: Research That Advances Technology
+            - heading "Research & Labs" [level=2] [ref=f19e246]
+          - generic [ref=f19e247]:
+            - button "Previous labs" [ref=f19e248]
+            - button "Next labs" [ref=f19e251]
+        - generic [ref=f19e255]:
+          - link [ref=f19e256] [cursor=pointer]:
+            - /url: /about/lab-facility#studio
+            - img "Studio" [ref=f19e257]
+            - generic [ref=f19e259]:
+              - heading "Studio" [level=3] [ref=f19e260]
+              - paragraph [ref=f19e261]: 8 Design Studios · Rooms 501–508 & 603–604 · Not shared with other departments
+          - link [ref=f19e266] [cursor=pointer]:
+            - /url: /about/lab-facility#computer-lab
+            - img "Computer Lab" [ref=f19e267]
+            - generic [ref=f19e269]:
+              - heading "Computer Lab" [level=3] [ref=f19e270]
+              - paragraph [ref=f19e271]: Room 411 · Coordinated by Mr Mojnu, Computer Lab Assistant
+          - link [ref=f19e276] [cursor=pointer]:
+            - /url: /about/lab-facility#studio
+            - img "Studio" [ref=f19e277]
+            - generic [ref=f19e279]:
+              - heading "Studio" [level=3] [ref=f19e280]
+              - paragraph [ref=f19e281]: 8 Design Studios · Rooms 501–508 & 603–604 · Not shared with other departments
+          - link [ref=f19e286] [cursor=pointer]:
+            - /url: /about/lab-facility#computer-lab
+            - img "Computer Lab" [ref=f19e287]
+            - generic [ref=f19e289]:
+              - heading "Computer Lab" [level=3] [ref=f19e290]
+              - paragraph [ref=f19e291]: Room 411 · Coordinated by Mr Mojnu, Computer Lab Assistant
+      - generic [ref=f19e297]:
+        - generic [ref=f19e298]:
+          - generic [ref=f19e299]: Research Focus Areas
+          - heading "Major Research Area" [level=2] [ref=f19e302]
+        - generic [ref=f19e303]:
+          - generic [ref=f19e304]:
+            - heading "Urban Design & Planning" [level=4] [ref=f19e311]
+            - heading "Heritage Conservation" [level=4] [ref=f19e316]
+            - heading "Design Studio Pedagogy" [level=4] [ref=f19e324]
+            - heading "Sustainable & Green Architecture" [level=4] [ref=f19e330]
+            - heading "Digital Design & BIM" [level=4] [ref=f19e337]
+            - heading "Housing & Settlement Studies" [level=4] [ref=f19e343]
+            - heading "Climate-Responsive Design" [level=4] [ref=f19e352]
+          - generic [ref=f19e353]:
+            - 'img "Featured: Design Studio Pedagogy & Architectural Research" [ref=f19e354]'
+            - generic [ref=f19e356]:
+              - generic [ref=f19e357]: Featured Insight
+              - heading "Design Studio Pedagogy & Architectural Research" [level=3] [ref=f19e358]
+              - paragraph [ref=f19e359]: This research cell operates at the intersection of design studio practice and academic inquiry, guiding students through site analysis, design development, and critique toward thesis-level architectural research.
+              - link "Read More" [ref=f19e360] [cursor=pointer]:
+                - /url: /research
+      - generic [ref=f19e364]:
+        - generic [ref=f19e365]:
+          - generic [ref=f19e366]:
+            - generic [ref=f19e367]: Campus Engagement
+            - heading "Departmental Events" [level=2] [ref=f19e370]
+            - paragraph [ref=f19e371]: From hands-on workshops to breakthrough announcements—never miss what's shaping tomorrow's designs at the Department of Architecture.
+          - link [ref=f19e372] [cursor=pointer]:
+            - /url: /student-society/events
+            - button "View All Events" [ref=f19e373]
+        - generic [ref=f19e377]:
+          - link "Thesis Jury 2026 24-Jul-26 Thesis Jury 2026 Thesis Jury 2026 at Department of Architecture, Sonargaon University, Ja 146, Mohakhali Wireless (24-Jul-26). View Details" [ref=f19e378] [cursor=pointer]:
+            - /url: /student-society/events/thesis-jury-2026
+            - generic [ref=f19e379]:
+              - img "Thesis Jury 2026" [ref=f19e382]
+              - generic [ref=f19e383]: 24-Jul-26
+            - generic [ref=f19e387]:
+              - heading "Thesis Jury 2026" [level=3] [ref=f19e388]
+              - paragraph [ref=f19e389]: Thesis Jury 2026 at Department of Architecture, Sonargaon University, Ja 146, Mohakhali Wireless (24-Jul-26).
+              - generic [ref=f19e390]: View Details
+          - link "Seminar on Popular cultures through postmodern spaces and its manifestations ... 4-Aug-23 Seminar on Popular cultures through postmodern spaces and its manifestations ... Seminar on Popular cultures through postmodern spaces and its manifestations in the applied fields by Dr. Tasleem Shakur at Lobby Space Ground Floor, Sonargaon University. 147/1, Green Road, Panthapath (4-Aug-23). View Details" [ref=f19e395] [cursor=pointer]:
+            - /url: /student-society/events/seminar-on-popular-cultures-through-postmodern-spaces-and-its-manifestations-in-
+            - generic [ref=f19e396]:
+              - img "Seminar on Popular cultures through postmodern spaces and its manifestations ..." [ref=f19e399]
+              - generic [ref=f19e400]: 4-Aug-23
+            - generic [ref=f19e404]:
+              - heading "Seminar on Popular cultures through postmodern spaces and its manifestations ..." [level=3] [ref=f19e405]
+              - paragraph [ref=f19e406]: Seminar on Popular cultures through postmodern spaces and its manifestations in the applied fields by Dr. Tasleem Shakur at Lobby Space Ground Floor, Sonargaon University. 147/1, Green Road, Panthapath (4-Aug-23).
+              - generic [ref=f19e407]: View Details
+          - link "Study Tour to Mohera Jamidar Bari, Tangail 27-Jul-18 Study Tour to Mohera Jamidar Bari, Tangail Study Tour to Mohera Jamidar Bari, Tangail at Tangail (27-Jul-18). View Details" [ref=f19e412] [cursor=pointer]:
+            - /url: /student-society/events/study-tour-to-mohera-jamidar-bari-tangail
+            - generic [ref=f19e413]:
+              - img "Study Tour to Mohera Jamidar Bari, Tangail" [ref=f19e416]
+              - generic [ref=f19e417]: 27-Jul-18
+            - generic [ref=f19e421]:
+              - heading "Study Tour to Mohera Jamidar Bari, Tangail" [level=3] [ref=f19e422]
+              - paragraph [ref=f19e423]: Study Tour to Mohera Jamidar Bari, Tangail at Tangail (27-Jul-18).
+              - generic [ref=f19e424]: View Details
+      - generic [ref=f19e430]:
+        - generic [ref=f19e431]:
+          - generic [ref=f19e432]:
+            - generic [ref=f19e433]: Department Updates
+            - heading "Latest News" [level=2] [ref=f19e436]
+            - paragraph [ref=f19e437]: From hands-on workshops to breakthrough announcements—never miss what's shaping tomorrow's innovations.
+          - link [ref=f19e438] [cursor=pointer]:
+            - /url: /news
+            - button "View All News" [ref=f19e439]
+        - generic [ref=f19e443]:
+          - link "(5th year project) Publication. — InspireliAwards.com - architecture & design. Achievement (5th year project) Publication. — InspireliAwards.com - architecture & design. 2025" [ref=f19e444] [cursor=pointer]:
+            - /url: /news/5th-year-project-publication-2025
+            - img "(5th year project) Publication. — InspireliAwards.com - architecture & design." [ref=f19e446]
+            - generic [ref=f19e447]: Achievement
+            - heading "(5th year project) Publication. — InspireliAwards.com - architecture & design." [level=3] [ref=f19e450]
+            - text: "2025"
+          - generic [ref=f19e451]:
+            - link "Achievement Finalist (Interior Catagorey) — Asia Young Designer Awards (AYDA) -2025 2025 Finalist (Interior Catagorey) — Asia Young Designer Awards (AYDA) -2025" [ref=f19e452] [cursor=pointer]:
+              - /url: /news/finalist-interior-catagorey-2025
+              - generic [ref=f19e453]:
+                - generic [ref=f19e454]: Achievement
+                - heading "Finalist (Interior Catagorey) — Asia Young Designer Awards (AYDA) -2025" [level=4] [ref=f19e457]
+                - text: "2025"
+              - img "Finalist (Interior Catagorey) — Asia Young Designer Awards (AYDA) -2025" [ref=f19e459]
+            - link "Achievement Winner — 26th cycle of the prestigious Shah Cement DOT Student Design Award [Volume-09, Issue-04, Category-B] 2025 Winner — 26th cycle of the prestigious Shah Cement DOT Student Design Award [Volume-09, Issue-04, Category-B]" [ref=f19e460] [cursor=pointer]:
+              - /url: /news/winner-2025-2
+              - generic [ref=f19e461]:
+                - generic [ref=f19e462]: Achievement
+                - heading "Winner — 26th cycle of the prestigious Shah Cement DOT Student Design Award [Volume-09, Issue-04, Category-B]" [level=4] [ref=f19e465]
+                - text: "2025"
+              - img "Winner — 26th cycle of the prestigious Shah Cement DOT Student Design Award [Volume-09, Issue-04, Category-B]" [ref=f19e467]
+            - link "Achievement Winner — CENNOVATION - 2025 2025 Winner — CENNOVATION - 2025" [ref=f19e468] [cursor=pointer]:
+              - /url: /news/winner-2025
+              - generic [ref=f19e469]:
+                - generic [ref=f19e470]: Achievement
+                - heading "Winner — CENNOVATION - 2025" [level=4] [ref=f19e473]
+                - text: "2025"
+              - img "Winner — CENNOVATION - 2025" [ref=f19e475]
+            - link "Achievement Finalist (Interior Catagorey) — Asia Young Designer Award (AYDA) - 2024 2024 Finalist (Interior Catagorey) — Asia Young Designer Award (AYDA) - 2024" [ref=f19e476] [cursor=pointer]:
+              - /url: /news/finalist-interior-catagorey-2024
+              - generic [ref=f19e477]:
+                - generic [ref=f19e478]: Achievement
+                - heading "Finalist (Interior Catagorey) — Asia Young Designer Award (AYDA) - 2024" [level=4] [ref=f19e481]
+                - text: "2024"
+              - img "Finalist (Interior Catagorey) — Asia Young Designer Award (AYDA) - 2024" [ref=f19e483]
+      - generic [ref=f19e485]:
+        - generic [ref=f19e486]:
+          - generic [ref=f19e487]: Student Life & Support
+          - heading "Essential Campus Services" [level=2] [ref=f19e490]
+          - paragraph [ref=f19e491]: Quick links to transportation, financial aid, student support, and campus activities—everything you need beyond the classroom.
+        - generic [ref=f19e493]:
+          - link [ref=f19e495] [cursor=pointer]:
+            - /url: /transport-service
+            - img "Transport Service" [ref=f19e496]
+            - generic [ref=f19e498]:
+              - heading "Transport Service" [level=3] [ref=f19e499]
+              - paragraph [ref=f19e500]: Free buses on 10 routes covering Dhaka & nearby areas.
+          - link [ref=f19e506] [cursor=pointer]:
+            - /url: /admission/waiver-scholarship
+            - img "Scholarships & Waivers" [ref=f19e507]
+            - generic [ref=f19e509]:
+              - heading "Scholarships & Waivers" [level=3] [ref=f19e510]
+              - paragraph [ref=f19e511]: Merit grants up to 100% + need-based aid calculator.
+          - link [ref=f19e517] [cursor=pointer]:
+            - /url: /student-society/club-list
+            - img "Student Life" [ref=f19e518]
+            - generic [ref=f19e520]:
+              - heading "Student Life" [level=3] [ref=f19e521]
+              - paragraph [ref=f19e522]: 50+ clubs, festivals, sports & volunteering.
+  - generic [ref=f19e532]:
+    - heading "Shape Your Future with Excellence" [level=2] [ref=f19e533]
+    - paragraph [ref=f19e534]: Join a vibrant academic community where innovation, leadership, and lifelong learning shape your path to success.
+    - generic [ref=f19e535]:
+      - link "Apply Now" [ref=f19e536] [cursor=pointer]:
+        - /url: http://sue.su.edu.bd:5081/sonargaon_erp/siteadmin/admission_info
+      - link "Request for Information" [ref=f19e537] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=f19e539]:
+    - generic [ref=f19e541]:
+      - generic [ref=f19e542]:
+        - generic [ref=f19e543]:
+          - img "Sonargaon University" [ref=f19e545]
+          - list [ref=f19e546]:
+            - listitem [ref=f19e547]:
+              - generic [ref=f19e551]: 147/I, Green Road, Panthapath, Tejgaon, Dhaka
+            - listitem [ref=f19e552]:
+              - generic [ref=f19e555]: "+8801775000888"
+            - listitem [ref=f19e556]:
+              - generic [ref=f19e559]: "+880241010352"
+            - listitem [ref=f19e560]:
+              - generic [ref=f19e564]: info@su.edu.bd
+          - generic [ref=f19e565]:
+            - link "Facebook" [ref=f19e566] [cursor=pointer]:
+              - /url: https://www.facebook.com/SonargaonUniversity
+            - link "Instagram" [ref=f19e569] [cursor=pointer]:
+              - /url: https://www.instagram.com/sonargaonuniversitybd/
+            - link "LinkedIn" [ref=f19e573] [cursor=pointer]:
+              - /url: https://www.linkedin.com/school/14451954/
+            - link "YouTube" [ref=f19e578] [cursor=pointer]:
+              - /url: https://www.youtube.com/@SonargaonUniversityEdu
+            - link "X" [ref=f19e582] [cursor=pointer]:
+              - /url: https://x.com/SonargaonUni
+            - link "Threads" [ref=f19e585] [cursor=pointer]:
+              - /url: https://www.threads.com/@sonargaonuniversitybd
+            - link "TikTok" [ref=f19e588] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@sonargaonuniversityedu
+        - generic [ref=f19e591]:
+          - generic [ref=f19e592]:
+            - heading "Useful Link" [level=4] [ref=f19e593]
+            - list [ref=f19e594]:
+              - listitem [ref=f19e595]:
+                - link "Tuition Fee" [ref=f19e596] [cursor=pointer]:
+                  - /url: /admission/tuition-fees
+              - listitem [ref=f19e597]:
+                - link "Faculty Staff" [ref=f19e598] [cursor=pointer]:
+                  - /url: /faculty-member
+              - listitem [ref=f19e599]:
+                - link "Alumni" [ref=f19e600] [cursor=pointer]:
+                  - /url: /student-society/alumni
+              - listitem [ref=f19e601]:
+                - link "Career" [ref=f19e602] [cursor=pointer]:
+                  - /url: https://su.edu.bd/welcome/career
+              - listitem [ref=f19e603]:
+                - link "Event" [ref=f19e604] [cursor=pointer]:
+                  - /url: /student-society/events
+              - listitem [ref=f19e605]:
+                - link "Our Blogs" [disabled] [ref=f19e606]:
+                  - /url: "#"
+          - generic [ref=f19e607]:
+            - heading "Get in Touch" [level=4] [ref=f19e608]
+            - list [ref=f19e609]:
+              - listitem [ref=f19e610]:
+                - link "Contact" [ref=f19e611] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=f19e612]:
+                - link "Meet With Us" [ref=f19e613] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=f19e614]:
+                - link "Privacy Policy" [ref=f19e615] [cursor=pointer]:
+                  - /url: /privacy-policy
+              - listitem [ref=f19e616]:
+                - link "Newsletters" [disabled] [ref=f19e617]:
+                  - /url: "#"
+              - listitem [ref=f19e618]:
+                - link "Location Map" [ref=f19e619] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=f19e620]:
+                - link "FAQ" [ref=f19e621] [cursor=pointer]:
+                  - /url: /student-society/faq
+        - generic [ref=f19e622]:
+          - heading "Quick Link" [level=4] [ref=f19e623]
+          - list [ref=f19e624]:
+            - listitem [ref=f19e625]:
+              - link "SU News" [ref=f19e626] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=f19e627]:
+              - link "Forum" [disabled] [ref=f19e628]:
+                - /url: "#"
+            - listitem [ref=f19e629]:
+              - link "Students" [disabled] [ref=f19e630]:
+                - /url: "#"
+            - listitem [ref=f19e631]:
+              - link "Parents" [disabled] [ref=f19e632]:
+                - /url: "#"
+            - listitem [ref=f19e633]:
+              - link "Teachers" [ref=f19e634] [cursor=pointer]:
+                - /url: https://su.edu.bd/faculty_members/all_faculty_details
+            - listitem [ref=f19e635]:
+              - link "Administration" [ref=f19e636] [cursor=pointer]:
+                - /url: https://su.edu.bd/About_us/new_administration/4
+        - generic [ref=f19e637]:
+          - heading "Campuses" [level=4] [ref=f19e638]
+          - list [ref=f19e639]:
+            - listitem [ref=f19e640]:
+              - link "Open Permanent Campus on Google Maps" [ref=f19e641] [cursor=pointer]:
+                - /url: https://maps.app.goo.gl/ohMNbdCgJvyXdTpa6
+                - generic [ref=f19e642]: Permanent Campus
+            - listitem [ref=f19e646]:
+              - link "Open Panthapath Campus on Google Maps" [ref=f19e647] [cursor=pointer]:
+                - /url: https://maps.app.goo.gl/L63SDT3h777sMEH1A
+                - generic [ref=f19e648]: Panthapath Campus
+            - listitem [ref=f19e652]:
+              - link "Open Mohakhali Campus on Google Maps" [ref=f19e653] [cursor=pointer]:
+                - /url: https://maps.app.goo.gl/1acukaudzYupXq4BA
+                - generic [ref=f19e654]: Mohakhali Campus
+      - generic [ref=f19e658]:
+        - paragraph [ref=f19e659]: Copyright © 2026 All Rights Reserved by Sonargaon University
+        - generic [ref=f19e660]:
+          - link "Privacy Policy" [ref=f19e661] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=f19e662] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Sitemap" [ref=f19e663] [cursor=pointer]:
+            - /url: /sitemap.xml
+        - button "Scroll to top" [ref=f19e664]
